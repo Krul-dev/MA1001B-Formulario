@@ -2318,7 +2318,7 @@ window.Quarto = {
   
   </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
 <div id="quarto-sidebar-toc-left" class="sidebar toc-left">
-  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="1">
     <h2 id="toc-title">Contenido</h2>
    
   <ul class="collapse">
@@ -2350,7 +2350,7 @@ window.Quarto = {
   <li><a href="#propiedades-de-la-esperanza-y-varianza" id="toc-propiedades-de-la-esperanza-y-varianza" class="nav-link" data-scroll-target="#propiedades-de-la-esperanza-y-varianza"><span class="header-section-number">5.6</span> Propiedades de la esperanza y varianza</a></li>
   <li><a href="#función-generatriz-de-momentos" id="toc-función-generatriz-de-momentos" class="nav-link" data-scroll-target="#función-generatriz-de-momentos"><span class="header-section-number">5.7</span> Función generatriz de momentos</a></li>
   </ul></li>
-  <li><a href="#distribuciones-muestrales-y-estimadores" id="toc-distribuciones-muestrales-y-estimadores" class="nav-link" data-scroll-target="#distribuciones-muestrales-y-estimadores"><span class="header-section-number">6</span> Distribuciones muestrales y estimadores</a>
+  <li><a href="#estimadores-e-intervalos-de-confianza" id="toc-estimadores-e-intervalos-de-confianza" class="nav-link" data-scroll-target="#estimadores-e-intervalos-de-confianza"><span class="header-section-number">6</span> Estimadores e intervalos de confianza</a>
   <ul class="collapse">
   <li><a href="#media-de-una-población" id="toc-media-de-una-población" class="nav-link" data-scroll-target="#media-de-una-población"><span class="header-section-number">6.1</span> Media de una población</a></li>
   <li><a href="#proporción-de-una-población" id="toc-proporción-de-una-población" class="nav-link" data-scroll-target="#proporción-de-una-población"><span class="header-section-number">6.2</span> Proporción de una población</a></li>
@@ -2358,6 +2358,10 @@ window.Quarto = {
   <li><a href="#diferencia-de-medias" id="toc-diferencia-de-medias" class="nav-link" data-scroll-target="#diferencia-de-medias"><span class="header-section-number">6.4</span> Diferencia de medias</a></li>
   <li><a href="#diferencia-de-proporciones-de-dos-poblaciones" id="toc-diferencia-de-proporciones-de-dos-poblaciones" class="nav-link" data-scroll-target="#diferencia-de-proporciones-de-dos-poblaciones"><span class="header-section-number">6.5</span> Diferencia de proporciones de dos poblaciones</a></li>
   <li><a href="#cociente-de-varianzas-de-dos-poblaciones-normales" id="toc-cociente-de-varianzas-de-dos-poblaciones-normales" class="nav-link" data-scroll-target="#cociente-de-varianzas-de-dos-poblaciones-normales"><span class="header-section-number">6.6</span> Cociente de varianzas de dos poblaciones normales</a></li>
+  </ul></li>
+  <li><a href="#prueba-de-hipótesis" id="toc-prueba-de-hipótesis" class="nav-link" data-scroll-target="#prueba-de-hipótesis"><span class="header-section-number">7</span> Prueba de hipótesis</a>
+  <ul class="collapse">
+  <li><a href="#media-de-una-población-1" id="toc-media-de-una-población-1" class="nav-link" data-scroll-target="#media-de-una-población-1"><span class="header-section-number">7.1</span> Media de una población</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -2373,7 +2377,7 @@ window.Quarto = {
 <section id="probabilidad" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Probabilidad</h1>
 <p><strong>Regla de la adición:</strong> Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son dos eventos, entonces <span class="math display">\[
-P(A \cup B) = P(A) + P(B) - P(A \cap B))
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
 \]</span></p>
 <p><strong>Regla de la multiplicación:</strong> Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son dos eventos, entonces <span class="math display">\[
 P(A \cap B) = P(A|B) \cdot  P(B)
@@ -2841,8 +2845,8 @@ M_X^{(n)}(0)=E[X^n]
 \]</span></p>
 </section>
 </section>
-<section id="distribuciones-muestrales-y-estimadores" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Distribuciones muestrales y estimadores</h1>
+<section id="estimadores-e-intervalos-de-confianza" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Estimadores e intervalos de confianza</h1>
 <section id="media-de-una-población" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="media-de-una-población"><span class="header-section-number">6.1</span> Media de una población</h2>
 <p>Sea <span class="math inline">\(X_{0}\)</span> una variable aleatoria con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^{2}\)</span> asociada a una población que deseamos analizar, y sean <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> los posibles valores de una muestra que extraeremos de esta población. Estas variables aleatorias son independientes e idénticamente distribuidas (i.i.d.) y tienen la misma distribución de probabilidad que nuestra variable original <span class="math inline">\(X_{0}\)</span>. Sea <span class="math display">\[
@@ -3080,6 +3084,63 @@ F=\frac{S_X^2/\sigma_X^2}{S_Y^2/\sigma_Y^2}
 \right)
 \]</span></p>
 <p>es un intervalo de confianza para el cociente de varianzas poblacionales <span class="math inline">\(\sigma_X^2/\sigma_Y^2\)</span>, con nivel de confianza <span class="math inline">\(1-\alpha\)</span>. Para calcular los valores de <span class="math inline">\(f_{\alpha/2,n-1,m-1}\)</span> y <span class="math inline">\(f_{1-\alpha/2,n-1,m-1}\)</span>, se utilizan las funciones de R <code>qf(1-alpha/2, n-1, m-1)</code> y <code>qf(alpha/2, n-1, m-1)</code>, respectivamente.</p>
+</section>
+</section>
+<section id="prueba-de-hipótesis" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Prueba de hipótesis</h1>
+<p>El procedimiento estándar de una prueba de hipótesis consiste en los siguientes pasos:</p>
+<ul>
+<li><strong>Paso 1:</strong> Plantear la hipótesis nula <span class="math inline">\(H_0\)</span> y la hipótesis alternativa <span class="math inline">\(H_1\)</span>.</li>
+<li><strong>Paso 2:</strong> Elegir un nivel de significancia <span class="math inline">\(\alpha\)</span>.</li>
+<li><strong>Paso 3:</strong> Determinar el estadístico de prueba y su distribución bajo la hipótesis nula.</li>
+<li><strong>Paso 4:</strong> Determinar la región de rechazo y no rechazo.</li>
+<li><strong>Paso 5:</strong> Calcular el valor del estadístico de prueba y su valor <span class="math inline">\(p\)</span> correspondiente.</li>
+<li><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>.</li>
+</ul>
+<p>Una vez terminada la prueba es importante interpretar los resultados en el contexto del problema.</p>
+<section id="media-de-una-población-1" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="media-de-una-población-1"><span class="header-section-number">7.1</span> Media de una población</h2>
+<section id="población-normal-y-varianza-conocida-1" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="población-normal-y-varianza-conocida-1"><span class="header-section-number">7.1.1</span> Población normal y varianza conocida</h3>
+<ul>
+<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+H_{0}:\mu=\mu_0
+\]</span> Hipótesis alternativa <span class="math display">\[
+\begin{array}{cc}
+H_{1}:\mu\neq\mu_0 &amp; \text{(dos colas)} \\
+H_{1}:\mu_0 &lt; \mu &amp; \text{(cola derecha)} \\
+H_{1}:\mu &lt; \mu_0 &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><strong>Paso 3:</strong> Estadístico de prueba <span class="math display">\[
+Z = \frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}\sim \mathcal{N}(0,1)
+\]</span></p></li>
+<li><p><strong>Paso 4:</strong> Región de no rechazo <span class="math display">\[
+\begin{array}{cc}
+(z_{\alpha/2}, z_{1-\alpha/2}) &amp; \text{(dos colas)} \\
+(-\infty, z_{1-\alpha}) &amp; \text{(cola derecha)} \\
+(z_{\alpha}, \infty) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+z = \frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}
+\]</span> donde <span class="math inline">\(\bar{x}\)</span> es el valor observado de <span class="math inline">\(\bar{X}\)</span>. El valor <span class="math inline">\(p\)</span> correspondiente se calcula como <span class="math display">\[
+\begin{array}{cc}
+p = 2 \min\{P(Z\leq z), P(Z\geq z)\} &amp; \text{(dos colas)} \\
+p = P(Z\geq z) &amp; \text{(cola derecha)} \\
+p = P(Z\leq z) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 6:</strong> Determinar si se rechaza o no la hipótesis nula, comparando el valor <span class="math inline">\(p\)</span> con el nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+</ul>
+<p><strong>Código en R:</strong></p>
+<ul>
+<li>Para obtener el valor de <span class="math inline">\(z_{\alpha}\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
+<li>Para obtener el valor de <span class="math inline">\(P(Z\leq z)\)</span>, se utiliza la función <code>pnorm(z)</code>.</li>
+<li>Para realizar la prueba de hipótesis se puede utilizar la función <code>z.test(datos, mu=mu0, sigma=sigma, alternative=&quot;two.sided&quot;)</code> del paquete <code>BSDA</code>. Para las pruebas por la izquierda o por la derecha, se puede cambiar el argumento <code>alternative</code> a <code>&quot;less&quot;</code> o <code>&quot;greater&quot;</code>, respectivamente.</li>
+</ul>
+</section>
 </section>
 </section>
 
