@@ -2362,6 +2362,11 @@ window.Quarto = {
   <li><a href="#prueba-de-hipótesis" id="toc-prueba-de-hipótesis" class="nav-link" data-scroll-target="#prueba-de-hipótesis"><span class="header-section-number">7</span> Prueba de hipótesis</a>
   <ul class="collapse">
   <li><a href="#media-de-una-población-1" id="toc-media-de-una-población-1" class="nav-link" data-scroll-target="#media-de-una-población-1"><span class="header-section-number">7.1</span> Media de una población</a></li>
+  <li><a href="#proporción-de-una-población-1" id="toc-proporción-de-una-población-1" class="nav-link" data-scroll-target="#proporción-de-una-población-1"><span class="header-section-number">7.2</span> Proporción de una población</a></li>
+  <li><a href="#varianza-de-una-población-normal-1" id="toc-varianza-de-una-población-normal-1" class="nav-link" data-scroll-target="#varianza-de-una-población-normal-1"><span class="header-section-number">7.3</span> Varianza de una población normal</a></li>
+  <li><a href="#diferencia-de-medias-1" id="toc-diferencia-de-medias-1" class="nav-link" data-scroll-target="#diferencia-de-medias-1"><span class="header-section-number">7.4</span> Diferencia de medias</a></li>
+  <li><a href="#diferencia-de-proporciones-de-dos-poblaciones-1" id="toc-diferencia-de-proporciones-de-dos-poblaciones-1" class="nav-link" data-scroll-target="#diferencia-de-proporciones-de-dos-poblaciones-1"><span class="header-section-number">7.5</span> Diferencia de proporciones de dos poblaciones</a></li>
+  <li><a href="#cociente-de-varianzas-de-dos-poblaciones-normales-1" id="toc-cociente-de-varianzas-de-dos-poblaciones-normales-1" class="nav-link" data-scroll-target="#cociente-de-varianzas-de-dos-poblaciones-normales-1"><span class="header-section-number">7.6</span> Cociente de varianzas de dos poblaciones normales</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -2408,115 +2413,105 @@ C_{n,r} = \frac{n!}{r! \cdot (n-r)!}
 <section id="distribución-binomial" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="distribución-binomial"><span class="header-section-number">3.1</span> Distribución binomial</h2>
 <p><span class="math inline">\(X\)</span> representa el número de éxitos en <span class="math inline">\(n\)</span> ensayos independientes, cada uno con probabilidad de éxito <span class="math inline">\(p\)</span>.</p>
-<ul>
-<li><p><strong>Parámetros:</strong> <span class="math display">\[
-\begin{aligned}
-n &amp; : \text{número de ensayos} \\
-p &amp; : \text{probabilidad de éxito en cada ensayo}
-\end{aligned}
-\]</span></p></li>
-<li><p><strong>Probabilidad puntual:</strong> <span class="math display">\[
-P(X=x) = \binom{n}{x} p^{x} (1-p)^{n-x}, \quad x=0,1,2,\ldots,n
-\]</span> En R: <code>dbinom(x, n, p)</code></p></li>
-<li><p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
-P(X \leq x) = \sum_{k=0}^{x} \binom{n}{k} p^{k} (1-p)^{n-k}, \quad x=0,1,2,\ldots,
-\]</span> En R: <code>pbinom(x, n, p)</code></p></li>
-<li><p><strong>Medidas:</strong> <span class="math display">\[
-\begin{aligned}
-\text{Media: } &amp; \mu = n \cdot p \\
-\text{Varianza: } &amp; \sigma^{2} = n \cdot p
-\end{aligned}
-\]</span></p></li>
-</ul>
+<p><strong>Parámetros:</strong> <span class="math display">\[
+  \begin{aligned}
+  n &amp; : \text{número de ensayos} \\
+  p &amp; : \text{probabilidad de éxito en cada ensayo}
+  \end{aligned}
+  \]</span></p>
+<p><strong>Probabilidad puntual:</strong> <span class="math display">\[
+  P(X=x) = \binom{n}{x} p^{x} (1-p)^{n-x}, \quad x=0,1,2,\ldots,n
+  \]</span> En R: <code>dbinom(x, n, p)</code></p>
+<p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
+  P(X \leq x) = \sum_{k=0}^{x} \binom{n}{k} p^{k} (1-p)^{n-k}, \quad x=0,1,2,\ldots,
+  \]</span> En R: <code>pbinom(x, n, p)</code></p>
+<p><strong>Medidas:</strong> <span class="math display">\[
+  \begin{aligned}
+  \text{Media: } &amp; \mu = n \cdot p \\
+  \text{Varianza: } &amp; \sigma^{2} = n \cdot p
+  \end{aligned}
+  \]</span></p>
 </section>
 <section id="distribución-hypergeométrica" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="distribución-hypergeométrica"><span class="header-section-number">3.2</span> Distribución hypergeométrica</h2>
 <p><span class="math inline">\(X\)</span> representa el número de éxitos en una muestra de tamaño <span class="math inline">\(n\)</span> extraída sin reemplazo de una población de tamaño <span class="math inline">\(N\)</span> que contiene <span class="math inline">\(M\)</span> éxitos.</p>
-<ul>
-<li><p><strong>Parámetros:</strong> <span class="math display">\[
-\begin{aligned}
-\text{n} &amp; : \text{tamaño de la muestra} \\
-\text{N} &amp; : \text{tamaño de la población} \\
-\text{M} &amp; : \text{número de éxitos en la población}
-\end{aligned}
-\]</span></p></li>
-<li><p><strong>Probabilidad puntual:</strong> <span class="math display">\[
-P(X=x) = \frac{\binom{M}{x} \binom{N-M}{n-x}}{\binom{N}{n}}, \quad x=0,1,2,\ldots,n
-\]</span> En R: <code>dhyper(x, M, N-M, n)</code></p></li>
-<li><p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
-P(X \leq x) = \sum_{k=0}^{x} \frac{\binom{M}{k} \binom{N-M}{n-k}}{\binom{N}{n}}, \quad x=0,1,2,\ldots,n
-\]</span> En R: <code>phyper(x, M, N-M, n)</code></p></li>
-<li><p><strong>Medidas:</strong> <span class="math display">\[
+<p><strong>Parámetros:</strong> <span class="math display">\[
+  \begin{aligned}
+  \text{n} &amp; : \text{tamaño de la muestra} \\
+  \text{N} &amp; : \text{tamaño de la población} \\
+  \text{M} &amp; : \text{número de éxitos en la población}
+  \end{aligned}
+  \]</span></p>
+<p><strong>Probabilidad puntual:</strong> <span class="math display">\[
+  P(X=x) = \frac{\binom{M}{x} \binom{N-M}{n-x}}{\binom{N}{n}}, \quad x=0,1,2,\ldots,n
+  \]</span> En R: <code>dhyper(x, M, N-M, n)</code></p>
+<p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
+  P(X \leq x) = \sum_{k=0}^{x} \frac{\binom{M}{k} \binom{N-M}{n-k}}{\binom{N}{n}}, \quad x=0,1,2,\ldots,n
+  \]</span> En R: <code>phyper(x, M, N-M, n)</code></p>
+<p><strong>Medidas:</strong> <span class="math display">\[
 \begin{aligned}
 \text{Media: } &amp; \mu = n \cdot \frac{M}{N} \\
 \text{Varianza: } &amp; \sigma^{2} = n \cdot \frac{M}{N} \cdot \left(1 - \frac{M}{N}\right) \cdot \left(\frac{N-n}{N-1}\right)
 \end{aligned}
-\]</span></p></li>
-</ul>
+\]</span></p>
 </section>
 <section id="distribución-geométrica" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="distribución-geométrica"><span class="header-section-number">3.3</span> Distribución geométrica</h2>
 <p><span class="math inline">\(X\)</span> representa el número de ensayos hasta obtener el primer éxito en una serie de ensayos independientes, cada uno con probabilidad de éxito <span class="math inline">\(p\)</span>.</p>
-<ul>
-<li><p><strong>Parámetro:</strong> <span class="math display">\[
-p : \text{probabilidad de éxito en cada ensayo}
-\]</span></p></li>
-<li><p><strong>Probabilidad puntual:</strong> <span class="math display">\[
-P(X=x) = (1-p)^{x-1} p, \quad x=1,2,3,\ldots
-\]</span> En R: <code>dgeom(x-1, p)</code></p></li>
-<li><p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
-P(X \leq x) = 1 - (1-p)^{x} , \quad x=1,2,3,\ldots
-\]</span> En R: <code>pgeom(x-1, p)</code></p></li>
-<li><p><strong>Medidas:</strong> <span class="math display">\[
-\text{Media: } \mu = \frac{1}{p} \\
-\text{Varianza: } \sigma^{2} = \frac{1-p}{p^{2}}
-\]</span></p></li>
-</ul>
+<p><strong>Parámetro:</strong> <span class="math display">\[
+  p : \text{probabilidad de éxito en cada ensayo}
+  \]</span></p>
+<p><strong>Probabilidad puntual:</strong> <span class="math display">\[
+  P(X=x) = (1-p)^{x-1} p, \quad x=1,2,3,\ldots
+  \]</span> En R: <code>dgeom(x-1, p)</code></p>
+<p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
+  P(X \leq x) = 1 - (1-p)^{x} , \quad x=1,2,3,\ldots
+  \]</span> En R: <code>pgeom(x-1, p)</code></p>
+<p><strong>Medidas:</strong> <span class="math display">\[
+  \text{Media: } \mu = \frac{1}{p} \\
+  \text{Varianza: } \sigma^{2} = \frac{1-p}{p^{2}}
+  \]</span></p>
 </section>
 <section id="distribución-binomial-negativa-o-de-pascal" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="distribución-binomial-negativa-o-de-pascal"><span class="header-section-number">3.4</span> Distribución binomial negativa (o de Pascal)</h2>
 <p><span class="math inline">\(X\)</span> representa el número de ensayos hasta obtener el <span class="math inline">\(r\)</span>-ésimo éxito en una serie de ensayos independientes, cada uno con probabilidad de éxito <span class="math inline">\(p\)</span>.</p>
-<ul>
-<li><p><strong>Parámetros:</strong> <span class="math display">\[
-\begin{aligned}
-r &amp; : \text{número de éxitos deseados} \\
-p &amp; : \text{probabilidad de éxito en cada ensayo}
-\end{aligned}
-\]</span></p></li>
-<li><p><strong>Probabilidad puntual:</strong> <span class="math display">\[
-P(X=x) = \binom{x-1}{r-1} p^{r} (1-p)^{x-r}, \quad x=r,r+1,r+2,\ldots
-\]</span> En R: <code>dnbinom(x-r, r, p)</code></p></li>
-<li><p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
-P(X \leq x) = \sum_{k=r}^{x} \binom{k-1}{r-1} p^{r} (1-p)^{k-r}, \quad x=r,r+1,r+2,\ldots
-\]</span> En R: <code>pnbinom(x-r, r, p)</code></p></li>
-<li><p><strong>Medidas:</strong> <span class="math display">\[
-\begin{aligned}
-\text{Media: } &amp; \mu = \frac{r}{p} \\
-\text{Varianza: } &amp; \sigma^{2} = \frac{r(1-p)}{p^{2}}
-\end{aligned}
-\]</span></p></li>
-</ul>
+<p><strong>Parámetros:</strong> <span class="math display">\[
+  \begin{aligned}
+  r &amp; : \text{número de éxitos deseados} \\
+  p &amp; : \text{probabilidad de éxito en cada ensayo}
+  \end{aligned}
+  \]</span></p>
+<p><strong>Probabilidad puntual:</strong> <span class="math display">\[
+  P(X=x) = \binom{x-1}{r-1} p^{r} (1-p)^{x-r}, \quad x=r,r+1,r+2,\ldots
+  \]</span> En R: <code>dnbinom(x-r, r, p)</code></p>
+<p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
+  P(X \leq x) = \sum_{k=r}^{x} \binom{k-1}{r-1} p^{r} (1-p)^{k-r}, \quad x=r,r+1,r+2,\ldots
+  \]</span> En R: <code>pnbinom(x-r, r, p)</code></p>
+<p><strong>Medidas:</strong> <span class="math display">\[
+  \begin{aligned}
+  \text{Media: } &amp; \mu = \frac{r}{p} \\
+  \text{Varianza: } &amp; \sigma^{2} = \frac{r(1-p)}{p^{2}}
+  \end{aligned}
+  \]</span></p>
 </section>
 <section id="distribución-de-poisson" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="distribución-de-poisson"><span class="header-section-number">3.5</span> Distribución de Poisson</h2>
 <p><span class="math inline">\(X\)</span> representa el número de eventos que ocurren en un intervalo de tiempo, dado que los eventos ocurren con una tasa promedio <span class="math inline">\(\lambda\)</span> y son independientes entre sí.</p>
-<ul>
-<li><p><strong>Parámetro:</strong> <span class="math display">\[
-\lambda : \text{tasa promedio de eventos por intervalo}
-\]</span></p></li>
-<li><p><strong>Probabilidad puntual:</strong> <span class="math display">\[
-P(X=x) = \frac{\lambda^{x} e^{-\lambda}}{x!}, \quad x=0,1,2,\ldots
-\]</span> En R: <code>dpois(x, lambda)</code></p></li>
-<li><p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
-P(X \leq x) = \sum_{k=0}^{x} \frac{\lambda^{k} e^{-\lambda}}{k!}, \quad x=0,1,2,\ldots
-\]</span> En R: <code>ppois(x, lambda)</code></p></li>
-<li><p><strong>Medidas:</strong> <span class="math display">\[
-\begin{aligned}
-\text{Media: } &amp; \mu = \lambda \\
-\text{Varianza: } &amp; \sigma^{2} = \lambda
-\end{aligned}
-\]</span></p></li>
-</ul>
+<p><strong>Parámetro:</strong> <span class="math display">\[
+  \lambda : \text{tasa promedio de eventos por intervalo}
+  \]</span></p>
+<p><strong>Probabilidad puntual:</strong> <span class="math display">\[
+  P(X=x) = \frac{\lambda^{x} e^{-\lambda}}{x!}, \quad x=0,1,2,\ldots
+  \]</span> En R: <code>dpois(x, lambda)</code></p>
+<p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
+  P(X \leq x) = \sum_{k=0}^{x} \frac{\lambda^{k} e^{-\lambda}}{k!}, \quad x=0,1,2,\ldots
+  \]</span> En R: <code>ppois(x, lambda)</code></p>
+<p><strong>Medidas:</strong> <span class="math display">\[
+  \begin{aligned}
+  \text{Media: } &amp; \mu = \lambda \\
+  \text{Varianza: } &amp; \sigma^{2} = \lambda
+  \end{aligned}
+  \]</span></p>
 </section>
 </section>
 <section id="distribuciones-continuas" class="level1" data-number="4">
@@ -2524,107 +2519,99 @@ P(X \leq x) = \sum_{k=0}^{x} \frac{\lambda^{k} e^{-\lambda}}{k!}, \quad x=0,1,2,
 <section id="distribución-uniforme" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="distribución-uniforme"><span class="header-section-number">4.1</span> Distribución uniforme</h2>
 <p><span class="math inline">\(X\)</span> representa una variable aleatoria continua que toma valores en el intervalo <span class="math inline">\([a,b]\)</span> con igual probabilidad.</p>
-<ul>
-<li><p><strong>Parámetros:</strong> <span class="math display">\[
-\begin{aligned}
-a &amp; : \text{límite inferior del intervalo} \\
-b &amp; : \text{límite superior del intervalo}
-\end{aligned}
-\]</span></p></li>
-<li><p><strong>Densidad de probabilidad:</strong> <span class="math display">\[
-f(x) = \frac{1}{b-a}, \quad a \leq x \leq b
-\]</span> En R: <code>dunif(x, a, b)</code></p></li>
-<li><p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
-P(X \leq x) = \frac{x-a}{b-a}, \quad a \leq x \leq b
-\]</span> En R: <code>punif(x, a, b)</code></p></li>
-<li><p><strong>Cuantiles:</strong> Dada una probabilidad <span class="math inline">\(p\)</span>, para encontrar el valor de <span class="math inline">\(q\)</span> tal que <span class="math display">\[
-P(X \leq q) = p
-\]</span> utilizamos la función de R <code>qunif(p, a, b)</code></p></li>
-<li><p><strong>Medidas:</strong> <span class="math display">\[
-\begin{aligned}
-\text{Media: } &amp; \mu = \frac{a+b}{2} \\
-\text{Varianza: } &amp; \sigma^{2} = \frac{(b-a)^{2}}{12}
-\end{aligned}
-\]</span></p></li>
-</ul>
+<p><strong>Parámetros:</strong> <span class="math display">\[
+  \begin{aligned}
+  a &amp; : \text{límite inferior del intervalo} \\
+  b &amp; : \text{límite superior del intervalo}
+  \end{aligned}
+  \]</span></p>
+<p><strong>Densidad de probabilidad:</strong> <span class="math display">\[
+  f(x) = \frac{1}{b-a}, \quad a \leq x \leq b
+  \]</span> En R: <code>dunif(x, a, b)</code></p>
+<p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
+  P(X \leq x) = \frac{x-a}{b-a}, \quad a \leq x \leq b
+  \]</span> En R: <code>punif(x, a, b)</code></p>
+<p><strong>Cuantiles:</strong> Dada una probabilidad <span class="math inline">\(p\)</span>, para encontrar el valor de <span class="math inline">\(q\)</span> tal que <span class="math display">\[
+  P(X \leq q) = p
+  \]</span> utilizamos la función de R <code>qunif(p, a, b)</code></p>
+<p><strong>Medidas:</strong> <span class="math display">\[
+  \begin{aligned}
+  \text{Media: } &amp; \mu = \frac{a+b}{2} \\
+  \text{Varianza: } &amp; \sigma^{2} = \frac{(b-a)^{2}}{12}
+  \end{aligned}
+  \]</span></p>
 </section>
 <section id="distribución-normal" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="distribución-normal"><span class="header-section-number">4.2</span> Distribución normal</h2>
 <p><span class="math inline">\(X\)</span> representa una variable aleatoria continua que sigue una distribución normal con media <span class="math inline">\(\mu\)</span> y desviación estándar <span class="math inline">\(\sigma\)</span>.</p>
-<ul>
-<li><p><strong>Parámetros:</strong> <span class="math display">\[
-\begin{aligned}
-\mu &amp; : \text{media} \\
-\sigma &amp; : \text{desviación estándar}
-\end{aligned}
-\]</span></p></li>
-<li><p><strong>Densidad de probabilidad:</strong> <span class="math display">\[
-f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}, \quad -\infty &lt; x &lt; \infty
-\]</span> En R: <code>dnorm(x, mu, sigma)</code></p></li>
-<li><p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
-P(X \leq x) = \int_{-\infty}^{x} f(t) dt, \quad -\infty &lt; x &lt; \infty
-\]</span> En R: <code>pnorm(x, mu, sigma)</code></p></li>
-<li><p><strong>Cuantiles:</strong> Dada una probabilidad <span class="math inline">\(p\)</span>, para encontrar el valor de <span class="math inline">\(q\)</span> tal que <span class="math display">\[
-P(X \leq q) = p
-\]</span> utilizamos la función de R <code>qnorm(p, mu, sigma)</code></p></li>
-<li><p><strong>Medidas:</strong> <span class="math display">\[
-\begin{aligned}
-\text{Media: } &amp; \mu \\
-\text{Varianza: } &amp; \sigma^{2}
-\end{aligned}
-\]</span></p></li>
-</ul>
+<p><strong>Parámetros:</strong> <span class="math display">\[
+  \begin{aligned}
+  \mu &amp; : \text{media} \\
+  \sigma &amp; : \text{desviación estándar}
+  \end{aligned}
+  \]</span></p>
+<p><strong>Densidad de probabilidad:</strong> <span class="math display">\[
+  f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}, \quad -\infty &lt; x &lt; \infty
+  \]</span> En R: <code>dnorm(x, mu, sigma)</code></p>
+<p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
+  P(X \leq x) = \int_{-\infty}^{x} f(t) dt, \quad -\infty &lt; x &lt; \infty
+  \]</span> En R: <code>pnorm(x, mu, sigma)</code></p>
+<p><strong>Cuantiles:</strong> Dada una probabilidad <span class="math inline">\(p\)</span>, para encontrar el valor de <span class="math inline">\(q\)</span> tal que <span class="math display">\[
+  P(X \leq q) = p
+  \]</span> utilizamos la función de R <code>qnorm(p, mu, sigma)</code></p>
+<p><strong>Medidas:</strong> <span class="math display">\[
+  \begin{aligned}
+  \text{Media: } &amp; \mu \\
+  \text{Varianza: } &amp; \sigma^{2}
+  \end{aligned}
+  \]</span></p>
 </section>
 <section id="distribución-exponencial" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="distribución-exponencial"><span class="header-section-number">4.3</span> Distribución exponencial</h2>
 <p><span class="math inline">\(X\)</span> representa el tiempo hasta que ocurra un evento en un proceso de Poisson con tasa <span class="math inline">\(\lambda\)</span>.</p>
-<ul>
-<li><p><strong>Parámetro:</strong> <span class="math display">\[
-\lambda : \text{tasa de eventos por unidad de tiempo}
-\]</span></p></li>
-<li><p><strong>Densidad de probabilidad:</strong> <span class="math display">\[
-f(x) = \lambda e^{-\lambda x}, \quad x \geq 0
-\]</span> En R: <code>dexp(x, lambda)</code></p></li>
-<li><p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
-P(X \leq x) = 1 - e^{-\lambda x}, \quad x \geq 0
-\]</span> En R: <code>pexp(x, lambda)</code></p></li>
-<li><p><strong>Cuantiles:</strong> Dada una probabilidad <span class="math inline">\(p\)</span>, para encontrar el valor de <span class="math inline">\(q\)</span> tal que <span class="math display">\[
-P(X \leq q) = p
-\]</span> utilizamos la función de R <code>qexp(p, lambda)</code></p></li>
-<li><p><strong>Medidas:</strong> <span class="math display">\[
-\begin{aligned}
-\text{Media: } &amp; \mu = \frac{1}{\lambda}
-\text{Varianza: } &amp; \sigma^{2} = \frac{1}{\lambda^{2}}
-\end{aligned}
-\]</span></p></li>
-</ul>
+<p><strong>Parámetro:</strong> <span class="math display">\[
+  \lambda : \text{tasa de eventos por unidad de tiempo}
+  \]</span></p>
+<p><strong>Densidad de probabilidad:</strong> <span class="math display">\[
+  f(x) = \lambda e^{-\lambda x}, \quad x \geq 0
+  \]</span> En R: <code>dexp(x, lambda)</code></p>
+<p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
+  P(X \leq x) = 1 - e^{-\lambda x}, \quad x \geq 0
+  \]</span> En R: <code>pexp(x, lambda)</code></p>
+<p><strong>Cuantiles:</strong> Dada una probabilidad <span class="math inline">\(p\)</span>, para encontrar el valor de <span class="math inline">\(q\)</span> tal que <span class="math display">\[
+  P(X \leq q) = p
+  \]</span> utilizamos la función de R <code>qexp(p, lambda)</code></p>
+<p><strong>Medidas:</strong> <span class="math display">\[
+  \begin{aligned}
+  \text{Media: } &amp; \mu = \frac{1}{\lambda}
+  \text{Varianza: } &amp; \sigma^{2} = \frac{1}{\lambda^{2}}
+  \end{aligned}
+  \]</span></p>
 </section>
 <section id="distribución-gamma" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="distribución-gamma"><span class="header-section-number">4.4</span> Distribución gamma</h2>
 <p><span class="math inline">\(X\)</span> representa el tiempo hasta que ocurran <span class="math inline">\(\alpha\)</span> eventos en un proceso de Poisson con tasa <span class="math inline">\(\lambda\)</span>.</p>
-<ul>
-<li><p><strong>Parámetros:</strong> <span class="math display">\[
-\begin{aligned}
-\alpha &amp; : \text{número de eventos deseados} \\
-\beta &amp; : \text{tiempo promedio en darse un evento}
-\end{aligned}
-\]</span> notemos que <span class="math inline">\(\beta = \frac{1}{\lambda}\)</span></p></li>
-<li><p><strong>Densidad de probabilidad:</strong> <span class="math display">\[
-f(x) = \frac{1}{\Gamma(\alpha) \beta^{\alpha}} x^{\alpha-1} e^{-\frac{x}{\beta}}, \quad x \geq 0
-\]</span> En R: <code>dgamma(x, alpha, 1/beta)</code></p></li>
-<li><p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
-P(X \leq x) = \frac{1}{\Gamma(\alpha) \beta^{\alpha}} \int_{0}^{x} t^{\alpha-1} e^{-\frac{t}{\beta}} dt, \quad x \geq 0
-\]</span> En R: <code>pgamma(x, alpha, 1/beta)</code></p></li>
-<li><p><strong>Cuantiles:</strong> Dada una probabilidad <span class="math inline">\(p\)</span>, para encontrar el valor de <span class="math inline">\(q\)</span> tal que <span class="math display">\[
-P(X \leq q) = p
-\]</span> utilizamos la función de R <code>qgamma(p, alpha, 1/beta)</code></p></li>
-<li><p><strong>Medidas:</strong> <span class="math display">\[
-\begin{aligned}
-\text{Media: } &amp; \mu = \alpha \cdot \beta \\
-\text{Varianza: } &amp; \sigma^{2} = \alpha \cdot \beta^{2}
-\end{aligned}
-\]</span></p></li>
-</ul>
+<p><strong>Parámetros:</strong> <span class="math display">\[
+  \begin{aligned}
+  \alpha &amp; : \text{número de eventos deseados} \\
+  \beta &amp; : \text{tiempo promedio en darse un evento}
+  \end{aligned}
+  \]</span> notemos que <span class="math inline">\(\beta = \frac{1}{\lambda}\)</span></p>
+<p><strong>Densidad de probabilidad:</strong> <span class="math display">\[
+  f(x) = \frac{1}{\Gamma(\alpha) \beta^{\alpha}} x^{\alpha-1} e^{-\frac{x}{\beta}}, \quad x \geq 0
+  \]</span> En R: <code>dgamma(x, alpha, 1/beta)</code></p>
+<p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
+  P(X \leq x) = \frac{1}{\Gamma(\alpha) \beta^{\alpha}} \int_{0}^{x} t^{\alpha-1} e^{-\frac{t}{\beta}} dt, \quad x \geq 0
+  \]</span> En R: <code>pgamma(x, alpha, 1/beta)</code></p>
+<p><strong>Cuantiles:</strong> Dada una probabilidad <span class="math inline">\(p\)</span>, para encontrar el valor de <span class="math inline">\(q\)</span> tal que <span class="math display">\[
+  P(X \leq q) = p
+  \]</span> utilizamos la función de R <code>qgamma(p, alpha, 1/beta)</code></p>
+<p><strong>Medidas:</strong> <span class="math display">\[
+  \begin{aligned}
+  \text{Media: } &amp; \mu = \alpha \cdot \beta \\
+  \text{Varianza: } &amp; \sigma^{2} = \alpha \cdot \beta^{2}
+  \end{aligned}
+  \]</span></p>
 </section>
 <section id="distribución-weibull" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="distribución-weibull"><span class="header-section-number">4.5</span> Distribución Weibull</h2>
@@ -2632,29 +2619,27 @@ P(X \leq q) = p
 <p><span class="math display">\[
 \lambda(t) = \frac{\alpha}{\beta} \left(\frac{t}{\beta}\right)^{\alpha-1}, \quad t&gt;0
 \]</span></p>
-<ul>
-<li><p><strong>Parámetros:</strong> <span class="math display">\[
-\begin{aligned}
-\alpha &amp; : \text{parámetro de forma} \\
-\beta &amp; : \text{parámetro de escala}
-\end{aligned}
-\]</span></p></li>
-<li><p><strong>Densidad de probabilidad:</strong> <span class="math display">\[
-f(x) = \frac{\alpha}{\beta} \left(\frac{x}{\beta}\right)^{\alpha-1} e^{-\left(\frac{x}{\beta}\right)^{\alpha}}, \quad x &gt; 0
-\]</span> En R: <code>dweibull(x, alpha, beta)</code></p></li>
-<li><p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
-P(X \leq x) = 1 - e^{-\left(\frac{x}{\beta}\right)^{\alpha}}, \quad x \geq 0
-\]</span> En R: <code>pweibull(x, alpha, beta)</code></p></li>
-<li><p><strong>Cuantiles:</strong> Dada una probabilidad <span class="math inline">\(p\)</span>, para encontrar el valor de <span class="math inline">\(q\)</span> tal que <span class="math display">\[
-P(X \leq q) = p
-\]</span> utilizamos la función de R <code>qweibull(p, alpha, beta)</code></p></li>
-<li><p><strong>Medidas:</strong> <span class="math display">\[
-\begin{aligned}
-\text{Media: } &amp; \mu = \beta \cdot \Gamma\left(1+\frac{1}{\alpha}\right) \\
-\text{Varianza: } &amp; \sigma^{2} = \beta^{2} \left[\Gamma\left(1+\frac{2}{\alpha}\right) - \Gamma\left(1+\frac{1}{\alpha}\right)^{2}\right]
-\end{aligned}
-\]</span></p></li>
-</ul>
+<p><strong>Parámetros:</strong> <span class="math display">\[
+  \begin{aligned}
+  \alpha &amp; : \text{parámetro de forma} \\
+  \beta &amp; : \text{parámetro de escala}
+  \end{aligned}
+  \]</span></p>
+<p><strong>Densidad de probabilidad:</strong> <span class="math display">\[
+  f(x) = \frac{\alpha}{\beta} \left(\frac{x}{\beta}\right)^{\alpha-1} e^{-\left(\frac{x}{\beta}\right)^{\alpha}}, \quad x &gt; 0
+  \]</span> En R: <code>dweibull(x, alpha, beta)</code></p>
+<p><strong>Probabilidad acumulada:</strong> <span class="math display">\[
+  P(X \leq x) = 1 - e^{-\left(\frac{x}{\beta}\right)^{\alpha}}, \quad x \geq 0
+  \]</span> En R: <code>pweibull(x, alpha, beta)</code></p>
+<p><strong>Cuantiles:</strong> Dada una probabilidad <span class="math inline">\(p\)</span>, para encontrar el valor de <span class="math inline">\(q\)</span> tal que <span class="math display">\[
+  P(X \leq q) = p
+  \]</span> utilizamos la función de R <code>qweibull(p, alpha, beta)</code></p>
+<p><strong>Medidas:</strong> <span class="math display">\[
+  \begin{aligned}
+  \text{Media: } &amp; \mu = \beta \cdot \Gamma\left(1+\frac{1}{\alpha}\right) \\
+  \text{Varianza: } &amp; \sigma^{2} = \beta^{2} \left[\Gamma\left(1+\frac{2}{\alpha}\right) - \Gamma\left(1+\frac{1}{\alpha}\right)^{2}\right]
+  \end{aligned}
+  \]</span></p>
 </section>
 </section>
 <section id="variables-aleatorias" class="level1" data-number="5">
@@ -2802,21 +2787,15 @@ P(X \leq q) = p
 </section>
 <section id="propiedades-de-la-esperanza-y-varianza" class="level2" data-number="5.6">
 <h2 data-number="5.6" class="anchored" data-anchor-id="propiedades-de-la-esperanza-y-varianza"><span class="header-section-number">5.6</span> Propiedades de la esperanza y varianza</h2>
-<ul>
-<li><strong>Linealidad de la esperanza:</strong></li>
-</ul>
+<p><strong>Linealidad de la esperanza:</strong></p>
 <p><span class="math display">\[
 E[aX+b]=aE[X]+b
 \]</span></p>
-<ul>
-<li><strong>Fórmula rápida de la varianza:</strong></li>
-</ul>
+<p><strong>Fórmula rápida de la varianza:</strong></p>
 <p><span class="math display">\[
 \operatorname{Var}[X]=E[X^2]-\mu^2
 \]</span></p>
-<ul>
-<li><strong>Escalamiento de la varianza:</strong></li>
-</ul>
+<p><strong>Escalamiento de la varianza:</strong></p>
 <p><span class="math display">\[
 \operatorname{Var}[aX+b]=a^2\operatorname{Var}[X]
 \]</span></p>
@@ -2828,15 +2807,11 @@ E[aX+b]=aE[X]+b
 M_X(t)=E[e^{tX}],\quad t\in\mathbb{R}
 \]</span></p>
 <p>siempre que esta esperanza exista.</p>
-<ul>
-<li><strong>Momentos de</strong> <span class="math inline">\(X\)</span>: El momento de orden <span class="math inline">\(n\)</span> se calcula mediante</li>
-</ul>
+<p><strong>Momentos de</strong> <span class="math inline">\(X\)</span>: El momento de orden <span class="math inline">\(n\)</span> se calcula mediante</p>
 <p><span class="math display">\[
 M_X^{(n)}(0)=E[X^n]
 \]</span></p>
-<ul>
-<li><strong>Cálculo de la media y varianza:</strong></li>
-</ul>
+<p><strong>Cálculo de la media y varianza:</strong></p>
 <p><span class="math display">\[
 \begin{aligned}
 \text{Media: } &amp; \mu=E[X]=M_X&#39;(0)\\[8pt]
@@ -2849,241 +2824,183 @@ M_X^{(n)}(0)=E[X^n]
 <h1 data-number="6"><span class="header-section-number">6</span> Estimadores e intervalos de confianza</h1>
 <section id="media-de-una-población" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="media-de-una-población"><span class="header-section-number">6.1</span> Media de una población</h2>
-<p>Sea <span class="math inline">\(X_{0}\)</span> una variable aleatoria con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^{2}\)</span> asociada a una población que deseamos analizar, y sean <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> los posibles valores de una muestra que extraeremos de esta población. Estas variables aleatorias son independientes e idénticamente distribuidas (i.i.d.) y tienen la misma distribución de probabilidad que nuestra variable original <span class="math inline">\(X_{0}\)</span>. Sea <span class="math display">\[
+<p>Para esta sección del formulario <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> representan los posibles valores de una muestra con reemplazo que extraeremos de una población con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^{2}\)</span>.</p>
+<p><strong>Media muestral:</strong> <span class="math display">\[
 \bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_{i}
-\]</span> entonces <span class="math inline">\(\bar{X}\)</span> es un estimador insesgado de la media poblacional <span class="math inline">\(\mu\)</span>, es decir <span class="math display">\[
-E[\bar{X}]=\mu
-\]</span> Similarmente, si <span class="math display">\[
+\]</span></p>
+<p><strong>Varianza muestral:</strong> <span class="math display">\[
 S^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}
-\]</span> entonces <span class="math inline">\(S^{2}\)</span> es un estimador insesgado de la varianza poblacional <span class="math inline">\(\sigma^{2}\)</span>, es decir <span class="math display">\[
-E[S^{2}]=\sigma^{2}
 \]</span></p>
 <section id="población-normal-y-varianza-conocida" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="población-normal-y-varianza-conocida"><span class="header-section-number">6.1.1</span> Población normal y varianza conocida</h3>
-<p>Si <span class="math inline">\(X_{0}\sim \mathcal{N}(\mu, \sigma^{2})\)</span> entonces <span class="math display">\[
-\bar{X}\sim \mathcal{N}(\mu, \sigma^{2}/n)
-\]</span> Además, como conocemos <span class="math inline">\(\sigma^{2}\)</span>, podemos calcular <span class="math display">\[
+<p><strong>Distribución muestral:</strong> Cuando la población es normal y conocemos <span class="math inline">\(\sigma^{2}\)</span>, usaremos <span class="math display">\[
 Z=\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}\sim \mathcal{N}(0,1)
-\]</span> Por tanto, si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, y <span class="math inline">\(\bar{x}\)</span> es el valor observado de <span class="math inline">\(\bar{X}\)</span>, entonces <span class="math display">\[
-\bigg(\bar{x}-z_{\alpha/2}\frac{\sigma}{\sqrt{n}}, \bar{x}+z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\bigg)
-\]</span> es un intervalo de confianza para <span class="math inline">\(\mu\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span>. Para calcular el valor de <span class="math inline">\(z_{\alpha/2}\)</span>, se utiliza la función de R <code>qnorm(1-alpha/2)</code>.</p>
+\]</span></p>
+<p><strong>Intervalo de confianza:</strong> Si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, y <span class="math inline">\(\bar{x}\)</span> es el valor observado de <span class="math inline">\(\bar{X}\)</span>, entonces <span class="math display">\[
+\bigg(\bar{x}-z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}, \bar{x}+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\bigg)
+\]</span> es un intervalo de confianza para <span class="math inline">\(\mu\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span>.</p>
+<p><strong>Código en R:</strong> Para obtener el valor de <span class="math inline">\(z_{1-\alpha/2}\)</span>, se utiliza la función <code>qnorm(1-alpha/2)</code>.</p>
 </section>
 <section id="población-normal-y-varianza-desconocida" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="población-normal-y-varianza-desconocida"><span class="header-section-number">6.1.2</span> Población normal y varianza desconocida</h3>
-<p>Si <span class="math inline">\(X_{0}\sim \mathcal{N}(\mu, \sigma^{2})\)</span> entonces <span class="math display">\[
-\bar{X}\sim \mathcal{N}(\mu, \sigma^{2}/n)
-\]</span> Además <span class="math display">\[
+<p><strong>Distribución muestral:</strong> Cuando la población es normal y desconocemos <span class="math inline">\(\sigma^{2}\)</span>, usaremos <span class="math display">\[
 T = \frac{\bar{X}-\mu}{S/\sqrt{n}}\sim t_{n-1}
-\]</span> Por lo tanto, si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> es el valor observado de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(s\)</span> es el valor observado de <span class="math inline">\(S\)</span>, entonces <span class="math display">\[
-\bigg(\bar{x}-t_{\alpha/2,n-1}\frac{s}{\sqrt{n}}, \bar{x}+t_{\alpha/2,n-1}\frac{s}{\sqrt{n}}\bigg)
-\]</span> es un intervalo de confianza para <span class="math inline">\(\mu\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span>. Para calcular el valor de <span class="math inline">\(t_{\alpha/2,n-1}\)</span>, se utiliza la función de R <code>qt(1-alpha/2, n-1)</code>.</p>
+\]</span></p>
+<p><strong>Intervalo de confianza:</strong> Si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> es el valor observado de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(s\)</span> es el valor observado de <span class="math inline">\(S\)</span>, entonces <span class="math display">\[
+\bigg(\bar{x}-t_{1-\alpha/2,n-1}\frac{s}{\sqrt{n}}, \bar{x}+t_{1-\alpha/2,n-1}\frac{s}{\sqrt{n}}\bigg)
+\]</span> es un intervalo de confianza para <span class="math inline">\(\mu\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span>.</p>
+<p><strong>Código en R:</strong> Para obtener el valor de <span class="math inline">\(t_{1-\alpha/2,n-1}\)</span>, se utiliza la función <code>qt(1-alpha/2, n-1)</code>.</p>
 </section>
 <section id="muestra-grande-y-varianza-conocida" class="level3" data-number="6.1.3">
 <h3 data-number="6.1.3" class="anchored" data-anchor-id="muestra-grande-y-varianza-conocida"><span class="header-section-number">6.1.3</span> Muestra grande y varianza conocida</h3>
-<p>Si el tamaño de la muestra es grande (<span class="math inline">\(n&gt;30\)</span>), entonces <span class="math display">\[
-\bar{X}\approx \mathcal{N}(\mu, \sigma^{2}/n)
-\]</span> Además, como conocemos <span class="math inline">\(\sigma^2\)</span>, podemos calcular <span class="math display">\[
+<p><strong>Distribución muestral:</strong> Cuando el tamaño de la muestra es grande (<span class="math inline">\(n&gt;30\)</span>) y conocemos <span class="math inline">\(\sigma^{2}\)</span>, usaremos la aproximación <span class="math display">\[
 Z = \frac{\bar{X}-\mu}{\sigma/\sqrt{n}}\approx \mathcal{N}(0,1)
-\]</span> Por lo tanto, si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, y <span class="math inline">\(\bar{x}\)</span> es el valor observado de <span class="math inline">\(\bar{X}\)</span>, entonces <span class="math display">\[
-\bigg(\bar{x}-z_{\alpha/2}\frac{\sigma}{\sqrt{n}}, \bar{x}+z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\bigg)
-\]</span> es un intervalo de confianza aproximado para <span class="math inline">\(\mu\)</span> con nivel de confianza nominal <span class="math inline">\(1-\alpha\)</span>. Para calcular el valor de <span class="math inline">\(z_{\alpha/2}\)</span>, se utiliza la función de R <code>qnorm(1-alpha/2)</code>.</p>
+\]</span></p>
+<p><strong>Intervalo de confianza:</strong> Si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, y <span class="math inline">\(\bar{x}\)</span> es el valor observado de <span class="math inline">\(\bar{X}\)</span>, entonces <span class="math display">\[
+\bigg(\bar{x}-z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}, \bar{x}+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\bigg)
+\]</span> es un intervalo de confianza aproximado para <span class="math inline">\(\mu\)</span> con nivel de confianza nominal <span class="math inline">\(1-\alpha\)</span>.</p>
+<p><strong>Código en R:</strong> Para obtener el valor de <span class="math inline">\(z_{1-\alpha/2}\)</span>, se utiliza la función <code>qnorm(1-alpha/2)</code>.</p>
 </section>
 <section id="muestra-grande-y-varianza-desconocida" class="level3" data-number="6.1.4">
 <h3 data-number="6.1.4" class="anchored" data-anchor-id="muestra-grande-y-varianza-desconocida"><span class="header-section-number">6.1.4</span> Muestra grande y varianza desconocida</h3>
-<p>Si el tamaño de la muestra es grande (<span class="math inline">\(n&gt;30\)</span>), entonces <span class="math display">\[
-\bar{X}\approx \mathcal{N}(\mu, \sigma^{2}/n)
-\]</span> Además, <span class="math display">\[
+<p><strong>Distribución muestral:</strong> Cuando el tamaño de la muestra es grande (<span class="math inline">\(n&gt;30\)</span>) y desconocemos <span class="math inline">\(\sigma^{2}\)</span>, usaremos la aproximación <span class="math display">\[
 Z = \frac{\bar{X}-\mu}{S/\sqrt{n}}\approx \mathcal{N}(0,1)
-\]</span> Por lo tanto, si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> es el valor observado de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(s\)</span> es el valor observado de <span class="math inline">\(S\)</span>, entonces <span class="math display">\[
-\bigg(\bar{x}-z_{\alpha/2}\frac{s}{\sqrt{n}}, \bar{x}+z_{\alpha/2}\frac{s}{\sqrt{n}}\bigg)
-\]</span> es un intervalo de confianza aproximado para <span class="math inline">\(\mu\)</span> con nivel de confianza nominal <span class="math inline">\(1-\alpha\)</span>. Para calcular el valor de <span class="math inline">\(z_{\alpha/2}\)</span>, se utiliza la función de R <code>qnorm(1-alpha/2)</code>.</p>
+\]</span></p>
+<p><strong>Intervalo de confianza:</strong> Si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> es el valor observado de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(s\)</span> es el valor observado de <span class="math inline">\(S\)</span>, entonces <span class="math display">\[
+\bigg(\bar{x}-z_{1-\alpha/2}\frac{s}{\sqrt{n}}, \bar{x}+z_{1-\alpha/2}\frac{s}{\sqrt{n}}\bigg)
+\]</span> es un intervalo de confianza aproximado para <span class="math inline">\(\mu\)</span> con nivel de confianza nominal <span class="math inline">\(1-\alpha\)</span>.</p>
+<p><strong>Código en R:</strong> Para obtener el valor de <span class="math inline">\(z_{1-\alpha/2}\)</span>, se utiliza la función <code>qnorm(1-alpha/2)</code>.</p>
 </section>
 </section>
 <section id="proporción-de-una-población" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="proporción-de-una-población"><span class="header-section-number">6.2</span> Proporción de una población</h2>
-<p>Sea <span class="math inline">\(X_{0}\sim \text{Bernoulli}(p)\)</span> una variable aleatoria asociada a una población que deseamos analizar, <span class="math inline">\(q=1-p\)</span>, y sean <span class="math inline">\(X_{1}, X_{2}, \ldots, X_{n}\)</span> los posibles valores de una muestra que extraeremos de esta población. Entonces estas variables aleatorias son independientes e idénticamente distribuidas (i.i.d.) y tienen la misma distribución de probabilidad que nuestra variable original <span class="math inline">\(X_{0}\)</span>. Sea <span class="math display">\[
+<p>Sean <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> los posibles valores de una muestra con reemplazo que extraeremos de una población con distribución <span class="math inline">\(\text{Bernoulli}(p)\)</span>.</p>
+<p><strong>Media muestral:</strong> <span class="math display">\[
 \bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_{i}
-\]</span> Entonces <span class="math inline">\(\bar{X}\)</span> es un estimador insesgado de la proporción poblacional <span class="math inline">\(p\)</span>, es decir <span class="math display">\[
-E[\bar{X}]=p
-\]</span> Consideremos ahora <span class="math display">\[
+\]</span></p>
+<p><strong>Estimador de varianza por sustitución:</strong> <span class="math display">\[
 \tilde{S}^{2} = \bar{X}(1-\bar{X})
-\]</span> entonces <span class="math display">\[
-E[\tilde{S}^{2}]=\frac{n-1}{n}pq = \frac{n-1}{n}\sigma^{2}
-\]</span> donde <span class="math inline">\(\sigma^{2}=pq\)</span> es la varianza poblacional. Por lo tanto, <span class="math inline">\(\tilde{S}^{2}\)</span> es un estimador sesgado de la varianza poblacional <span class="math inline">\(\sigma^{2}\)</span>, pero consistente. Notemos ahora que <span class="math display">\[
+\]</span></p>
+<p><strong>Distribución muestral:</strong> <span class="math display">\[
 n\bar{X}\sim \text{Binomial}(n,p)
-\]</span> Además, si <span class="math inline">\(n\)</span> es grande (<span class="math inline">\(n&gt;20\)</span>, <span class="math inline">\(np&gt;5\)</span> y <span class="math inline">\(nq&gt;5\)</span>), entonces <span class="math display">\[
-\bar{X}\approx \mathcal{N}(p, pq/n)
-\]</span> En este caso <span class="math display">\[
+\]</span> Además, si <span class="math inline">\(n\)</span> es grande (<span class="math inline">\(n&gt;20\)</span>, <span class="math inline">\(np&gt;5\)</span> y <span class="math inline">\(nq&gt;5\)</span>), entonces podemos usar la aproximación <span class="math display">\[
 Z = \frac{\bar{X}-p}{\tilde{S}/\sqrt{n}}\approx \mathcal{N}(0,1)
-\]</span> Por lo tanto, si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> es el valor observado de <span class="math inline">\(\bar{X}\)</span>, y <span class="math inline">\(\tilde{s}\)</span> es el valor observado de <span class="math inline">\(\tilde{S}\)</span>, entonces <span class="math display">\[
-\bigg(\bar{x}-z_{\alpha/2}\frac{\tilde{s}}{\sqrt{n}}, \bar{x}+z_{\alpha/2}\frac{\tilde{s}}{\sqrt{n}}\bigg)
-\]</span> es un intervalo de confianza aproximado para <span class="math inline">\(p\)</span> con nivel de confianza nominal <span class="math inline">\(1-\alpha\)</span>. Para calcular el valor de <span class="math inline">\(z_{\alpha/2}\)</span>, se utiliza la función de R <code>qnorm(1-alpha/2)</code>.</p>
+\]</span></p>
+<p><strong>Intervalo de confianza:</strong> Si <span class="math inline">\(n\)</span> es grande, <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> es el valor observado de <span class="math inline">\(\bar{X}\)</span>, y <span class="math inline">\(\tilde{s}\)</span> es el valor observado de <span class="math inline">\(\tilde{S}\)</span>, entonces <span class="math display">\[
+\bigg(\bar{x}-z_{1-\alpha/2}\frac{\tilde{s}}{\sqrt{n}}, \bar{x}+z_{1-\alpha/2}\frac{\tilde{s}}{\sqrt{n}}\bigg)
+\]</span> es un intervalo de confianza aproximado para <span class="math inline">\(p\)</span> con nivel de confianza nominal <span class="math inline">\(1-\alpha\)</span>.</p>
+<p><strong>Código en R:</strong> Para obtener el valor de <span class="math inline">\(z_{1-\alpha/2}\)</span>, se utiliza la función de R <code>qnorm(1-alpha/2)</code>.</p>
 </section>
 <section id="varianza-de-una-población-normal" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="varianza-de-una-población-normal"><span class="header-section-number">6.3</span> Varianza de una población normal</h2>
-<p>Sea <span class="math inline">\(X_{0}\sim \mathcal{N}(\mu, \sigma^{2})\)</span> una variable aleatoria asociada a una población que deseamos analizar, y sean <span class="math inline">\(X_{1}, X_{2}, \ldots, X_{n}\)</span> los posibles valores de una muestra que extraeremos de esta población. Entonces estas variables aleatorias son independientes e idénticamente distribuidas (i.i.d.) y tienen la misma distribución de probabilidad que nuestra variable original <span class="math inline">\(X_{0}\)</span>. Sea <span class="math display">\[
+<p>Sean <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> los posibles valores de una muestra con reemplazo que extraeremos de una población con distribución <span class="math inline">\(\mathcal{N}(\mu,\sigma^{2})\)</span>.</p>
+<p><strong>Varianza muestral:</strong> <span class="math display">\[
 S^{2} = \frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}
-\]</span> Entonces <span class="math display">\[
+\]</span></p>
+<p><strong>Distribución muestral:</strong> <span class="math display">\[
 \frac{(n-1)S^{2}}{\sigma^{2}}\sim \chi^{2}_{n-1}
-\]</span> Por lo tanto, si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(s^{2}\)</span> es el valor observado de <span class="math inline">\(S^{2}\)</span>, entonces <span class="math display">\[
-\bigg(\frac{(n-1)s^{2}}{\chi^{2}_{\alpha/2,n-1}}, \frac{(n-1)s^{2}}{\chi^{2}_{1-\alpha/2,n-1}}\bigg)
-\]</span> es un intervalo de confianza para la varianza <span class="math inline">\(\sigma^{2}\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span>. Para calcular los valores de <span class="math inline">\(\chi^{2}_{\alpha/2,n-1}\)</span> y <span class="math inline">\(\chi^{2}_{1-\alpha/2,n-1}\)</span>, se utilizan las funciones de R <code>qchisq(1-alpha/2, n-1)</code> y <code>qchisq(alpha/2, n-1)</code>, respectivamente.</p>
+\]</span></p>
+<p><strong>Intervalo de confianza:</strong> Si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(s^{2}\)</span> es el valor observado de <span class="math inline">\(S^{2}\)</span>, entonces <span class="math display">\[
+\bigg(\frac{(n-1)s^{2}}{\chi^{2}_{1-\alpha/2,n-1}}, \frac{(n-1)s^{2}}{\chi^{2}_{\alpha/2,n-1}}\bigg)
+\]</span> es un intervalo de confianza para la varianza <span class="math inline">\(\sigma^{2}\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span>.</p>
+<p><strong>Código en R:</strong> Para obtener los valores de <span class="math inline">\(\chi^{2}_{\alpha/2,n-1}\)</span> y <span class="math inline">\(\chi^{2}_{1-\alpha/2,n-1}\)</span>, se utilizan las funciones <code>qchisq(alpha/2, n-1)</code> y <code>qchisq(1-alpha/2, n-1)</code>, respectivamente.</p>
 </section>
 <section id="diferencia-de-medias" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="diferencia-de-medias"><span class="header-section-number">6.4</span> Diferencia de medias</h2>
-<p>Sean <span class="math inline">\(X_{0}\)</span> e <span class="math inline">\(Y_{0}\)</span> dos variables aleatorias independientes asociadas a dos poblaciones que deseamos analizar, con medias <span class="math inline">\(\mu_{X}\)</span> y <span class="math inline">\(\mu_{Y}\)</span>, y varianzas <span class="math inline">\(\sigma_{X}^{2}\)</span> y <span class="math inline">\(\sigma_{Y}^{2}\)</span>, respectivamente. Sean <span class="math inline">\(X_{1}, X_{2}, \ldots, X_{n}\)</span> los posibles valores de una muestra que extraeremos de la primera población, y sean <span class="math inline">\(Y_{1}, Y_{2}, \ldots, Y_{m}\)</span> los posibles valores de una muestra que extraeremos de la segunda población. Entonces estas variables aleatorias son independientes e idénticamente distribuidas (i.i.d.) y tienen la misma distribución de probabilidad que nuestras variables originales <span class="math inline">\(X_{0}\)</span> e <span class="math inline">\(Y_{0}\)</span>. Sea <span class="math display">\[
+<p>Para esta sección del formulario consideraremos dos poblaciones con medias <span class="math inline">\(\mu_{X}\)</span> y <span class="math inline">\(\mu_{Y}\)</span>, y varianzas <span class="math inline">\(\sigma_{X}^{2}\)</span> y <span class="math inline">\(\sigma_{Y}^{2}\)</span>, respectivamente. Usaremos <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span>, para representar los posibles valores de una muestra con reemplazo que extraeremos de la primera población y usaremos <span class="math inline">\(Y_{1}, Y_{2}, \ldots, Y_{m}\)</span> para representar los posibles valores de una muestra con reemplazo que extraeremos de la segunda población.</p>
+<p><strong>Medias muestrales:</strong> <span class="math display">\[
 \bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_{i}, \quad \bar{Y}=\frac{1}{m}\sum_{j=1}^{m}Y_{j}
-\]</span> y sean <span class="math display">\[
+\]</span></p>
+<p><strong>Varianzas muestrales:</strong> <span class="math display">\[
 S_{X}^{2} = \frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}, \quad S_{Y}^{2} = \frac{1}{m-1}\sum_{j=1}^{m}(Y_{j}-\bar{Y})^{2}
 \]</span></p>
 <section id="poblaciones-normales-y-varianzas-conocidas" class="level3" data-number="6.4.1">
 <h3 data-number="6.4.1" class="anchored" data-anchor-id="poblaciones-normales-y-varianzas-conocidas"><span class="header-section-number">6.4.1</span> Poblaciones normales y varianzas conocidas</h3>
-<p>Si <span class="math inline">\(X_{0}\sim \mathcal{N}(\mu_{X}, \sigma_{X}^{2})\)</span> e <span class="math inline">\(Y_{0}\sim \mathcal{N}(\mu_{Y}, \sigma_{Y}^{2})\)</span>, entonces <span class="math display">\[
-\bar{X}-\bar{Y}\sim \mathcal{N}(\mu_{X}-\mu_{Y}, \sigma_{X}^{2}/n+\sigma_{Y}^{2}/m)
-\]</span> Además, como conocemos las varianzas, podemos calcular <span class="math display">\[
+<p><strong>Distribución muestral:</strong> Cuando las poblaciones son normales y conocemos las varianzas, usaremos <span class="math display">\[
 Z = \frac{(\bar{X}-\bar{Y})-(\mu_{X}-\mu_{Y})}{\sqrt{\sigma_{X}^{2}/n+\sigma_{Y}^{2}/m}}\sim \mathcal{N}(0,1)
-\]</span> Por lo tanto, si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(\bar{y}\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(\bar{Y}\)</span>, respectivamente, entonces <span class="math display">\[
-\bigg((\bar{x}-\bar{y})-z_{\alpha/2}\sqrt{\sigma_{X}^{2}/n+\sigma_{Y}^{2}/m}, (\bar{x}-\bar{y})+z_{\alpha/2}\sqrt{\sigma_{X}^{2}/n+\sigma_{Y}^{2}/m}\bigg)
-\]</span> es un intervalo de confianza para <span class="math inline">\(\mu_{X}-\mu_{Y}\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span>. Para calcular el valor de <span class="math inline">\(z_{\alpha/2}\)</span>, se utiliza la función de R <code>qnorm(1-alpha/2)</code>.</p>
+\]</span></p>
+<p><strong>Intervalo de confianza:</strong> Si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(\bar{y}\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(\bar{Y}\)</span>, respectivamente, entonces <span class="math display">\[
+\bigg((\bar{x}-\bar{y})-z_{1-\alpha/2}\sqrt{\sigma_{X}^{2}/n+\sigma_{Y}^{2}/m}, (\bar{x}-\bar{y})+z_{1-\alpha/2}\sqrt{\sigma_{X}^{2}/n+\sigma_{Y}^{2}/m}\bigg)
+\]</span> es un intervalo de confianza para <span class="math inline">\(\mu_{X}-\mu_{Y}\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span>.</p>
+<p><strong>Código en R:</strong> Para obtener el valor de <span class="math inline">\(z_{1-\alpha/2}\)</span>, se utiliza la función <code>qnorm(1-alpha/2)</code>.</p>
 </section>
 <section id="poblaciones-normales-varianzas-desconocidas-e-iguales" class="level3" data-number="6.4.2">
 <h3 data-number="6.4.2" class="anchored" data-anchor-id="poblaciones-normales-varianzas-desconocidas-e-iguales"><span class="header-section-number">6.4.2</span> Poblaciones normales, varianzas desconocidas e iguales</h3>
-<p>Si <span class="math inline">\(X_{0}\sim \mathcal{N}(\mu_{X}, \sigma^{2})\)</span> e <span class="math inline">\(Y_{0}\sim \mathcal{N}(\mu_{Y}, \sigma^{2})\)</span>, entonces <span class="math display">\[
-\bar{X}-\bar{Y}\sim \mathcal{N}(\mu_{X}-\mu_{Y}, \sigma^{2}/n+\sigma^{2}/m)
-\]</span> Además <span class="math display">\[
+<p><strong>Distribución muestral:</strong> Cuando las poblaciones son normales y las varianzas son desconocidas e iguales, usaremos <span class="math display">\[
 T = \frac{(\bar{X}-\bar{Y})-(\mu_{X}-\mu_{Y})}{S_{p}\sqrt{1/n+1/m}}\sim t_{n+m-2}
 \]</span> donde <span class="math display">\[
 S_{p}^{2} = \frac{(n-1)S_{X}^{2}+(m-1)S_{Y}^{2}}{n+m-2}
-\]</span> Por lo tanto, si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(\bar{y}\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(\bar{Y}\)</span>, respectivamente, y <span class="math inline">\(s_{p}\)</span> es el valor observado de <span class="math inline">\(S_{p}\)</span>, entonces <span class="math display">\[
-\bigg((\bar{x}-\bar{y})-t_{\alpha/2,n+m-2}s_{p}\sqrt{1/n+1/m}, (\bar{x}-\bar{y})+t_{\alpha/2,n+m-2}s_{p}\sqrt{1/n+1/m}\bigg)
-\]</span> es un intervalo de confianza para <span class="math inline">\(\mu_{X}-\mu_{Y}\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span>. Para calcular el valor de <span class="math inline">\(t_{\alpha/2,n+m-2}\)</span>, se utiliza la función de R <code>qt(1-alpha/2, n+m-2)</code>.</p>
+\]</span></p>
+<p><strong>Intervalo de confianza:</strong> Si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(\bar{y}\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(\bar{Y}\)</span>, respectivamente, y <span class="math inline">\(s_{p}\)</span> es el valor observado de <span class="math inline">\(S_{p}\)</span>, entonces <span class="math display">\[
+\bigg((\bar{x}-\bar{y})-t_{1-\alpha/2,n+m-2}s_{p}\sqrt{1/n+1/m}, (\bar{x}-\bar{y})+t_{1-\alpha/2,n+m-2}s_{p}\sqrt{1/n+1/m}\bigg)
+\]</span> es un intervalo de confianza para <span class="math inline">\(\mu_{X}-\mu_{Y}\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span>.</p>
+<p><strong>Código en R:</strong> Para obtener el valor de <span class="math inline">\(t_{1-\alpha/2,n+m-2}\)</span>, se utiliza la función de <code>qt(1-alpha/2, n+m-2)</code>.</p>
 </section>
 <section id="poblaciones-normales-varianzas-desconocidas-y-diferentes" class="level3" data-number="6.4.3">
 <h3 data-number="6.4.3" class="anchored" data-anchor-id="poblaciones-normales-varianzas-desconocidas-y-diferentes"><span class="header-section-number">6.4.3</span> Poblaciones normales, varianzas desconocidas y diferentes</h3>
-<p>Si <span class="math inline">\(X_{0}\sim \mathcal{N}(\mu_{X},\sigma_{X}^{2})\)</span> e <span class="math inline">\(Y_{0}\sim \mathcal{N}(\mu_{Y},\sigma_{Y}^{2})\)</span>, con <span class="math inline">\(\sigma_X^2\neq\sigma_Y^2\)</span>, y tomamos dos muestras independientes de tamaños <span class="math inline">\(n\)</span> y <span class="math inline">\(m\)</span>, respectivamente, entonces</p>
-<p><span class="math display">\[
-\bar{X}-\bar{Y}\sim \mathcal{N}\left(\mu_{X}-\mu_{Y},\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}\right)
-\]</span></p>
-<p>Además, utilizando la aproximación de Welch-Satterthwaite,</p>
-<p><span class="math display">\[
+<p><strong>Distribución muestral:</strong> Cuando las poblaciones son normales y las varianzas son desconocidas y diferentes, usaremos la aproximación de Welch-Satterthwaite, <span class="math display">\[
 T=\frac{(\bar{X}-\bar{Y})-(\mu_{X}-\mu_{Y})}{\sqrt{S_{X}^{2}/n+S_{Y}^{2}/m}}\approx t_{\nu}
-\]</span></p>
-<p>donde los grados de libertad aproximados se calculan mediante</p>
-<p><span class="math display">\[
+\]</span> donde los grados de libertad aproximados se calculan mediante <span class="math display">\[
 \nu=\frac{\left(S_{X}^{2}/n+S_{Y}^{2}/m\right)^{2}}{\frac{(S_{X}^{2}/n)^{2}}{n-1}+\frac{(S_{Y}^{2}/m)^{2}}{m-1}}
 \]</span></p>
-<p>Por lo tanto, si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(\bar{y}\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(\bar{Y}\)</span>, respectivamente, y <span class="math inline">\(s_X^2\)</span> y <span class="math inline">\(s_Y^2\)</span> son los valores observados de las varianzas muestrales, entonces</p>
-<p><span class="math display">\[
-\bigg((\bar{x}-\bar{y})-t_{\alpha/2,\hat{\nu}}\sqrt{s_X^2/n+s_Y^2/m},\;(\bar{x}-\bar{y})+t_{\alpha/2,\hat{\nu}}\sqrt{s_X^2/n+s_Y^2/m}\bigg)
-\]</span></p>
-<p>es un intervalo de confianza aproximado para la diferencia de medias <span class="math inline">\(\mu_X-\mu_Y\)</span>, con nivel de confianza nominal <span class="math inline">\(1-\alpha\)</span>, donde</p>
-<p><span class="math display">\[
+<p><strong>Intervalo de confianza:</strong> Si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(\bar{y}\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(\bar{Y}\)</span>, respectivamente, y <span class="math inline">\(s_X^2\)</span> y <span class="math inline">\(s_Y^2\)</span> son los valores observados de las varianzas muestrales, entonces <span class="math display">\[
+\bigg((\bar{x}-\bar{y})-t_{1-\alpha/2,\hat{\nu}}\sqrt{s_X^2/n+s_Y^2/m},\;(\bar{x}-\bar{y})+t_{1-\alpha/2,\hat{\nu}}\sqrt{s_X^2/n+s_Y^2/m}\bigg)
+\]</span> es un intervalo de confianza aproximado para la diferencia de medias <span class="math inline">\(\mu_X-\mu_Y\)</span>, con nivel de confianza nominal <span class="math inline">\(1-\alpha\)</span>, donde <span class="math display">\[
 \hat{\nu}=\frac{\left(s_{X}^{2}/n+s_{Y}^{2}/m\right)^{2}}{\frac{(s_{X}^{2}/n)^{2}}{n-1}+\frac{(s_{Y}^{2}/m)^{2}}{m-1}}.
 \]</span></p>
-<p>Para calcular el valor de <span class="math inline">\(t_{\alpha/2,\hat{\nu}}\)</span>, se utiliza la función de R <code>qt(1-alpha/2, nu)</code>, donde <code>nu</code> representa el valor calculado de <span class="math inline">\(\hat{\nu}\)</span>.</p>
+<p><strong>Código en R:</strong> Para obtener el valor de <span class="math inline">\(t_{1-\alpha/2,\hat{\nu}}\)</span>, se utiliza la función de R <code>qt(1-alpha/2, nu)</code>, donde <code>nu</code> representa el valor calculado de <span class="math inline">\(\hat{\nu}\)</span>.</p>
 </section>
 <section id="muestras-grandes-y-varianzas-conocidas" class="level3" data-number="6.4.4">
 <h3 data-number="6.4.4" class="anchored" data-anchor-id="muestras-grandes-y-varianzas-conocidas"><span class="header-section-number">6.4.4</span> Muestras grandes y varianzas conocidas</h3>
-<p>Si <span class="math inline">\(n,m \geq 40\)</span>, entonces <span class="math display">\[
-\bar{X}-\bar{Y}\approx \mathcal{N}(\mu_{X}-\mu_{Y}, \sigma_{X}^{2}/n+\sigma_{Y}^{2}/m)
-\]</span> Además, como conocemos las varianzas, podemos calcular <span class="math display">\[
+<p><strong>Distribución muestral:</strong> Cuando las muestras son grandes (<span class="math inline">\(n,m \geq 40\)</span>) y conocemos las varianzas, usaremos la aproximación <span class="math display">\[
 Z = \frac{(\bar{X}-\bar{Y})-(\mu_{X}-\mu_{Y})}{\sqrt{\sigma_{X}^{2}/n+\sigma_{Y}^{2}/m}}\sim \mathcal{N}(0,1)
-\]</span> Por lo tanto, si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(\bar{y}\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(\bar{Y}\)</span>, respectivamente, entonces <span class="math display">\[
-\bigg((\bar{x}-\bar{y})-z_{\alpha/2}\sqrt{\sigma_{X}^{2}/n+\sigma_{Y}^{2}/m}, (\bar{x}-\bar{y})+z_{\alpha/2}\sqrt{\sigma_{X}^{2}/n+\sigma_{Y}^{2}/m}\bigg)
-\]</span> es un intervalo de confianza aproximado para <span class="math inline">\(\mu_{X}-\mu_{Y}\)</span> con nivel de confianza nominal <span class="math inline">\(1-\alpha\)</span>. Para calcular el valor de <span class="math inline">\(z_{\alpha/2}\)</span>, se utiliza la función de R <code>qnorm(1-alpha/2)</code>.</p>
+\]</span></p>
+<p><strong>Intervalo de confianza:</strong> Si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(\bar{y}\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(\bar{Y}\)</span>, respectivamente, entonces <span class="math display">\[
+\bigg((\bar{x}-\bar{y})-z_{1-\alpha/2}\sqrt{\sigma_{X}^{2}/n+\sigma_{Y}^{2}/m}, (\bar{x}-\bar{y})+z_{1-\alpha/2}\sqrt{\sigma_{X}^{2}/n+\sigma_{Y}^{2}/m}\bigg)
+\]</span> es un intervalo de confianza aproximado para <span class="math inline">\(\mu_{X}-\mu_{Y}\)</span> con un nivel de confianza nominal dado por <span class="math inline">\(1-\alpha\)</span>.</p>
+<p><strong>Código en R:</strong> Para obtener el valor de <span class="math inline">\(z_{1-\alpha/2}\)</span>, se utiliza la función <code>qnorm(1-alpha/2)</code>.</p>
 </section>
 <section id="muestras-grandes-y-varianzas-desconocidas" class="level3" data-number="6.4.5">
 <h3 data-number="6.4.5" class="anchored" data-anchor-id="muestras-grandes-y-varianzas-desconocidas"><span class="header-section-number">6.4.5</span> Muestras grandes y varianzas desconocidas</h3>
-<p>Si <span class="math inline">\(n,m \geq 40\)</span>, entonces <span class="math display">\[
-\bar{X}-\bar{Y}\approx \mathcal{N}(\mu_{X}-\mu_{Y}, \sigma_{X}^{2}/n+\sigma_{Y}^{2}/m)
-\]</span> Además <span class="math display">\[
+<p><strong>Distribución muestral:</strong> Cuando las muestras son grandes (<span class="math inline">\(n,m \geq 40\)</span>) y desconocemos las varianzas, usaremos la aproximación <span class="math display">\[
 Z = \frac{(\bar{X}-\bar{Y})-(\mu_{X}-\mu_{Y})}{\sqrt{S_{X}^{2}/n+S_{Y}^{2}/m}}\approx \mathcal{N}(0,1)
-\]</span> Por lo tanto, si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(\bar{y}\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(\bar{Y}\)</span>, respectivamente, y <span class="math inline">\(s_X^2\)</span> y <span class="math inline">\(s_Y^2\)</span> son los valores observados de las varianzas muestrales, entonces <span class="math display">\[
-\bigg((\bar{x}-\bar{y})-z_{\alpha/2}\sqrt{s_X^2/n+s_Y^2/m}, (\bar{x}-\bar{y})+z_{\alpha/2}\sqrt{s_X^2/n+s_Y^2/m}\bigg)
-\]</span> es un intervalo de confianza aproximado para <span class="math inline">\(\mu_{X}-\mu_{Y}\)</span> con nivel de confianza nominal <span class="math inline">\(1-\alpha\)</span>. Para calcular el valor de <span class="math inline">\(z_{\alpha/2}\)</span>, se utiliza la función de R <code>qnorm(1-alpha/2)</code>.</p>
+\]</span></p>
+<p><strong>Intervalo de confianza:</strong> Si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(\bar{y}\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(\bar{Y}\)</span>, respectivamente, y <span class="math inline">\(s_X^2\)</span> y <span class="math inline">\(s_Y^2\)</span> son los valores observados de las varianzas muestrales, entonces <span class="math display">\[
+\bigg((\bar{x}-\bar{y})-z_{1-\alpha/2}\sqrt{s_X^2/n+s_Y^2/m}, (\bar{x}-\bar{y})+z_{1-\alpha/2}\sqrt{s_X^2/n+s_Y^2/m}\bigg)
+\]</span> es un intervalo de confianza aproximado para <span class="math inline">\(\mu_{X}-\mu_{Y}\)</span> con un nivel de confianza nominal dado por <span class="math inline">\(1-\alpha\)</span>.</p>
+<p><strong>Código en R:</strong> Para obtener el valor de <span class="math inline">\(z_{1-\alpha/2}\)</span>, se utiliza la función de R <code>qnorm(1-alpha/2)</code>.</p>
 </section>
 </section>
 <section id="diferencia-de-proporciones-de-dos-poblaciones" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="diferencia-de-proporciones-de-dos-poblaciones"><span class="header-section-number">6.5</span> Diferencia de proporciones de dos poblaciones</h2>
-<p>Sean <span class="math inline">\(X_{0}\sim \text{Bernoulli}(p_X)\)</span> e <span class="math inline">\(Y_{0}\sim \text{Bernoulli}(p_Y)\)</span> dos variables aleatorias asociadas a las poblaciones que deseamos comparar, con <span class="math inline">\(q_X=1-p_X\)</span> y <span class="math inline">\(q_Y=1-p_Y\)</span>. Supongamos que <span class="math inline">\(X_1,\ldots,X_n\)</span> e <span class="math inline">\(Y_1,\ldots,Y_m\)</span> son dos muestras independientes entre sí, cuyas variables aleatorias son independientes e idénticamente distribuidas (i.i.d.) dentro de cada muestra, con las mismas distribuciones que <span class="math inline">\(X_0\)</span> e <span class="math inline">\(Y_0\)</span>, respectivamente.</p>
-<p>Sean</p>
-<p><span class="math display">\[
-\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i,
-\qquad
-\bar{Y}=\frac{1}{m}\sum_{j=1}^{m}Y_j.
+<p>Sean <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> y <span class="math inline">\(Y_1, Y_2, \ldots, Y_m\)</span> los posibles valores de dos muestras independientes con reemplazo que extraeremos de dos poblaciones con distribuciones <span class="math inline">\(\text{Bernoulli}(p_X)\)</span> y <span class="math inline">\(\text{Bernoulli}(p_Y)\)</span>, respectivamente.</p>
+<p><strong>Medias muestrales:</strong> <span class="math display">\[
+\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i, \quad \bar{Y}=\frac{1}{m}\sum_{j=1}^{m}Y_j
 \]</span></p>
-<p>Entonces <span class="math inline">\(\bar{X}-\bar{Y}\)</span> es un estimador insesgado de la diferencia de proporciones poblacionales <span class="math inline">\(p_X-p_Y\)</span>, es decir,</p>
-<p><span class="math display">\[
-E[\bar{X}-\bar{Y}]=p_X-p_Y.
+<p><strong>Estimadores de varianza por sustitución:</strong> <span class="math display">\[
+\tilde{S}_X^2=\bar{X}(1-\bar{X}), \quad \tilde{S}_Y^2=\bar{Y}(1-\bar{Y})
 \]</span></p>
-<p>Además, por la independencia de las muestras,</p>
-<p><span class="math display">\[
-\operatorname{Var}(\bar{X}-\bar{Y})
-=\frac{p_Xq_X}{n}+\frac{p_Yq_Y}{m}.
+<p><strong>Distribución muestral:</strong> Cuando los tamaños de muestra son suficientemente grandes (<span class="math inline">\(np_X\geq10\)</span>, <span class="math inline">\(nq_X\geq10\)</span>, <span class="math inline">\(mp_Y\geq10\)</span> y <span class="math inline">\(mq_Y\geq10\)</span>, donde <span class="math inline">\(q_X=1-p_X\)</span> y <span class="math inline">\(q_Y=1-p_Y\)</span>), usaremos la aproximación <span class="math display">\[
+Z=\frac{(\bar{X}-\bar{Y})-(p_X-p_Y)}{\sqrt{\tilde{S}_X^2/n+\tilde{S}_Y^2/m}}\approx\mathcal{N}(0,1)
 \]</span></p>
-<p>Consideremos ahora los estimadores por sustitución</p>
-<p><span class="math display">\[
-\tilde{S}_X^2=\bar{X}(1-\bar{X}),
-\qquad
-\tilde{S}_Y^2=\bar{Y}(1-\bar{Y}).
-\]</span></p>
-<p>Notemos que estos estimadores son sesgados, pero consistentes para las varianzas poblacionales <span class="math inline">\(\sigma_X^2=p_Xq_X\)</span> y <span class="math inline">\(\sigma_Y^2=p_Yq_Y\)</span>, respectivamente.</p>
-<p>Si los tamaños de muestra son suficientemente grandes (<span class="math inline">\(np_X\geq10\)</span>, <span class="math inline">\(nq_X\geq10\)</span>, <span class="math inline">\(mp_Y\geq10\)</span> y <span class="math inline">\(mq_Y\geq10\)</span>), entonces</p>
-<p><span class="math display">\[
-\bar{X}-\bar{Y}\approx
-\mathcal{N}\left(
-p_X-p_Y,\,
-\frac{p_Xq_X}{n}+\frac{p_Yq_Y}{m}
-\right).
-\]</span></p>
-<p>En este caso,</p>
-<p><span class="math display">\[
-Z=
-\frac{(\bar{X}-\bar{Y})-(p_X-p_Y)}
-{\sqrt{\tilde{S}_X^2/n+\tilde{S}_Y^2/m}}
-\approx\mathcal{N}(0,1).
-\]</span></p>
-<p>Por lo tanto, si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(\bar{y}\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(\bar{Y}\)</span>, respectivamente, y <span class="math inline">\(\tilde{s}_X^2\)</span> y <span class="math inline">\(\tilde{s}_Y^2\)</span> son los valores observados de los estimadores de varianza, entonces</p>
-<p><span class="math display">\[
-\left(
-(\bar{x}-\bar{y})-
-z_{\alpha/2}\sqrt{\frac{\tilde{s}_X^2}{n}+\frac{\tilde{s}_Y^2}{m}},
-\;
-(\bar{x}-\bar{y})+
-z_{\alpha/2}\sqrt{\frac{\tilde{s}_X^2}{n}+\frac{\tilde{s}_Y^2}{m}}
-\right)
-\]</span></p>
-<p>es un intervalo de confianza aproximado para <span class="math inline">\(p_X-p_Y\)</span>, con nivel de confianza nominal <span class="math inline">\(1-\alpha\)</span>. Para calcular el valor de <span class="math inline">\(z_{\alpha/2}\)</span>, se utiliza la función de R <code>qnorm(1-alpha/2)</code>.</p>
+<p><strong>Intervalo de confianza:</strong> Si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(\bar{y}\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(\bar{Y}\)</span>, respectivamente, y <span class="math inline">\(\tilde{s}_X^2\)</span> y <span class="math inline">\(\tilde{s}_Y^2\)</span> son los valores observados de los estimadores de varianza, entonces <span class="math display">\[
+\bigg((\bar{x}-\bar{y})-z_{1-\alpha/2}\sqrt{\tilde{s}_X^2/n+\tilde{s}_Y^2/m}, (\bar{x}-\bar{y})+z_{1-\alpha/2}\sqrt{\tilde{s}_X^2/n+\tilde{s}_Y^2/m}\bigg)
+\]</span> es un intervalo de confianza aproximado para <span class="math inline">\(p_X-p_Y\)</span> con un nivel de confianza nominal dado por <span class="math inline">\(1-\alpha\)</span>.</p>
+<p><strong>Código en R:</strong> Para obtener el valor de <span class="math inline">\(z_{1-\alpha/2}\)</span>, se utiliza la función <code>qnorm(1-alpha/2)</code>.</p>
 </section>
 <section id="cociente-de-varianzas-de-dos-poblaciones-normales" class="level2" data-number="6.6">
 <h2 data-number="6.6" class="anchored" data-anchor-id="cociente-de-varianzas-de-dos-poblaciones-normales"><span class="header-section-number">6.6</span> Cociente de varianzas de dos poblaciones normales</h2>
-<p>Sean <span class="math inline">\(X_{0}\sim \mathcal{N}(\mu_X,\sigma_X^2)\)</span> e <span class="math inline">\(Y_{0}\sim \mathcal{N}(\mu_Y,\sigma_Y^2)\)</span> dos variables aleatorias asociadas a las poblaciones que deseamos comparar. Supongamos que <span class="math inline">\(X_1,\ldots,X_n\)</span> e <span class="math inline">\(Y_1,\ldots,Y_m\)</span> son dos muestras independientes entre sí, cuyas variables aleatorias son independientes e idénticamente distribuidas (i.i.d.) dentro de cada muestra, con las mismas distribuciones que <span class="math inline">\(X_0\)</span> e <span class="math inline">\(Y_0\)</span>, respectivamente.</p>
-<p>Sean</p>
-<p><span class="math display">\[
-S_X^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X)^2,
-\qquad
-S_Y^2=\frac{1}{m-1}\sum_{j=1}^m(Y_j-\bar Y)^2.
+<p>Sean <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> y <span class="math inline">\(Y_1, Y_2, \ldots, Y_m\)</span> los posibles valores de dos muestras independientes con reemplazo que extraeremos de dos poblaciones con distribuciones <span class="math inline">\(\mathcal{N}(\mu_X,\sigma_X^2)\)</span> y <span class="math inline">\(\mathcal{N}(\mu_Y,\sigma_Y^2)\)</span>, respectivamente.</p>
+<p><strong>Varianzas muestrales:</strong> <span class="math display">\[
+S_X^2=\frac{1}{n-1}\sum_{i=1}^{n}(X_i-\bar{X})^2, \quad S_Y^2=\frac{1}{m-1}\sum_{j=1}^{m}(Y_j-\bar{Y})^2
 \]</span></p>
-<p>Entonces, para <span class="math inline">\(n,m\geq2\)</span>,</p>
-<p><span class="math display">\[
-\frac{(n-1)S_X^2}{\sigma_X^2}\sim\chi^2_{n-1},
-\qquad
-\frac{(m-1)S_Y^2}{\sigma_Y^2}\sim\chi^2_{m-1}.
+<p><strong>Distribución muestral:</strong> Cuando las poblaciones son normales y las muestras son independientes, usaremos <span class="math display">\[
+F=\frac{S_X^2/\sigma_X^2}{S_Y^2/\sigma_Y^2}\sim F_{n-1,m-1}
 \]</span></p>
-<p>Como las muestras son independientes, estos dos estadísticos también son independientes. Por lo tanto,</p>
-<p><span class="math display">\[
-F=\frac{S_X^2/\sigma_X^2}{S_Y^2/\sigma_Y^2}
-=\frac{S_X^2}{S_Y^2}\frac{\sigma_Y^2}{\sigma_X^2}
-\sim F_{n-1,m-1}.
-\]</span></p>
-<p>Si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(s_X^2\)</span> y <span class="math inline">\(s_Y^2\)</span> son los valores observados de <span class="math inline">\(S_X^2\)</span> y <span class="math inline">\(S_Y^2\)</span>, respectivamente, entonces</p>
-<p><span class="math display">\[
-\left(
-\frac{s_X^2/s_Y^2}{f_{\alpha/2,n-1,m-1}},
-\frac{s_X^2/s_Y^2}{f_{1-\alpha/2,n-1,m-1}}
-\right)
-\]</span></p>
-<p>es un intervalo de confianza para el cociente de varianzas poblacionales <span class="math inline">\(\sigma_X^2/\sigma_Y^2\)</span>, con nivel de confianza <span class="math inline">\(1-\alpha\)</span>. Para calcular los valores de <span class="math inline">\(f_{\alpha/2,n-1,m-1}\)</span> y <span class="math inline">\(f_{1-\alpha/2,n-1,m-1}\)</span>, se utilizan las funciones de R <code>qf(1-alpha/2, n-1, m-1)</code> y <code>qf(alpha/2, n-1, m-1)</code>, respectivamente.</p>
+<p><strong>Intervalo de confianza:</strong> Si <span class="math inline">\(\alpha\)</span> es un nivel de significancia, <span class="math inline">\(s_X^2\)</span> y <span class="math inline">\(s_Y^2\)</span> son los valores observados de <span class="math inline">\(S_X^2\)</span> y <span class="math inline">\(S_Y^2\)</span>, respectivamente, entonces <span class="math display">\[
+\bigg(\frac{s_X^2/s_Y^2}{f_{1-\alpha/2,n-1,m-1}}, \frac{s_X^2/s_Y^2}{f_{\alpha/2,n-1,m-1}}\bigg)
+\]</span> es un intervalo de confianza para el cociente de varianzas <span class="math inline">\(\sigma_X^2/\sigma_Y^2\)</span> con un nivel de confianza dado por <span class="math inline">\(1-\alpha\)</span>.</p>
+<p><strong>Código en R:</strong> Para obtener los valores de <span class="math inline">\(f_{\alpha/2,n-1,m-1}\)</span> y <span class="math inline">\(f_{1-\alpha/2,n-1,m-1}\)</span>, se utilizan las funciones <code>qf(alpha/2, n-1, m-1)</code> y <code>qf(1-alpha/2, n-1, m-1)</code>, respectivamente.</p>
 </section>
 </section>
 <section id="prueba-de-hipótesis" class="level1" data-number="7">
@@ -3095,7 +3012,12 @@ F=\frac{S_X^2/\sigma_X^2}{S_Y^2/\sigma_Y^2}
 <li><strong>Paso 3:</strong> Determinar el estadístico de prueba y su distribución bajo la hipótesis nula.</li>
 <li><strong>Paso 4:</strong> Determinar la región de rechazo y no rechazo.</li>
 <li><strong>Paso 5:</strong> Calcular el valor del estadístico de prueba y su valor <span class="math inline">\(p\)</span> correspondiente.</li>
-<li><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>.</li>
+<li><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\begin{array}{ll}
+\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+\end{array}
+\]</span></li>
 </ul>
 <p>Una vez terminada la prueba es importante interpretar los resultados en el contexto del problema.</p>
 <section id="media-de-una-población-1" class="level2" data-number="7.1">
@@ -3132,7 +3054,12 @@ p = P(Z\geq z) &amp; \text{(cola derecha)} \\
 p = P(Z\leq z) &amp; \text{(cola izquierda)}
 \end{array}
 \]</span></p></li>
-<li><p><strong>Paso 6:</strong> Determinar si se rechaza o no la hipótesis nula, comparando el valor <span class="math inline">\(p\)</span> con el nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\begin{array}{ll}
+\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+\end{array}
+\]</span></p></li>
 </ul>
 <p><strong>Código en R:</strong></p>
 <ul>
@@ -3141,6 +3068,572 @@ p = P(Z\leq z) &amp; \text{(cola izquierda)}
 <li>Para realizar la prueba de hipótesis se puede utilizar la función <code>z.test(datos, mu=mu0, sigma.x=sigma, alternative=&quot;two.sided&quot;)</code> del paquete <code>BSDA</code>. Para las pruebas por la izquierda o por la derecha, se puede cambiar el argumento <code>alternative</code> a <code>&quot;less&quot;</code> o <code>&quot;greater&quot;</code>, respectivamente.</li>
 </ul>
 </section>
+<section id="población-normal-y-varianza-desconocida-1" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="población-normal-y-varianza-desconocida-1"><span class="header-section-number">7.1.2</span> Población normal y varianza desconocida</h3>
+<ul>
+<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+H_0:\mu=\mu_0
+\]</span> Hipótesis alternativa <span class="math display">\[
+\begin{array}{cc}
+H_1:\mu\neq\mu_0 &amp; \text{(dos colas)} \\
+H_1:\mu_0&lt;\mu &amp; \text{(cola derecha)} \\
+H_1:\mu&lt;\mu_0 &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><strong>Paso 3:</strong> Estadístico de prueba <span class="math display">\[
+T=\frac{\bar{X}-\mu_0}{S/\sqrt{n}}\sim t_{n-1}
+\]</span></p></li>
+<li><p><strong>Paso 4:</strong> Región de rechazo <span class="math display">\[
+\begin{array}{cc}
+(-\infty,t_{\alpha/2,n-1})\cup(t_{1-\alpha/2,n-1},\infty) &amp; \text{(dos colas)} \\
+(t_{1-\alpha,n-1},\infty) &amp; \text{(cola derecha)} \\
+(-\infty,t_{\alpha,n-1}) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}
+\]</span> donde <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(s\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(S\)</span>, respectivamente. El valor <span class="math inline">\(p\)</span> correspondiente se calcula como <span class="math display">\[
+\begin{array}{cc}
+p=2\min\{P(T\leq t),P(T\geq t)\} &amp; \text{(dos colas)} \\
+p=P(T\geq t) &amp; \text{(cola derecha)} \\
+p=P(T\leq t) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\begin{array}{ll}
+\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+\end{array}
+\]</span></p></li>
+</ul>
+<p><strong>Código en R:</strong></p>
+<ul>
+<li>Para obtener el valor de <span class="math inline">\(t_{\alpha,n-1}\)</span>, se utiliza la función <code>qt(alpha, n-1)</code>.</li>
+<li>Para obtener el valor de <span class="math inline">\(P(T\leq t)\)</span>, se utiliza la función <code>pt(t, n-1)</code>.</li>
+<li>Para realizar la prueba de hipótesis se puede utilizar la función <code>t.test(datos, mu=mu0, alternative=&quot;two.sided&quot;)</code>. Para las pruebas por la izquierda o por la derecha, se puede cambiar el argumento <code>alternative</code> a <code>&quot;less&quot;</code> o <code>&quot;greater&quot;</code>, respectivamente.</li>
+</ul>
+</section>
+<section id="muestra-grande-y-varianza-conocida-1" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="muestra-grande-y-varianza-conocida-1"><span class="header-section-number">7.1.3</span> Muestra grande y varianza conocida</h3>
+<ul>
+<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+H_0:\mu=\mu_0
+\]</span> Hipótesis alternativa <span class="math display">\[
+\begin{array}{cc}
+H_1:\mu\neq\mu_0 &amp; \text{(dos colas)} \\
+H_1:\mu_0&lt;\mu &amp; \text{(cola derecha)} \\
+H_1:\mu&lt;\mu_0 &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><strong>Paso 3:</strong> Estadístico de prueba. Cuando el tamaño de la muestra es grande (<span class="math inline">\(n&gt;30\)</span>) y conocemos <span class="math inline">\(\sigma^2\)</span>, usaremos la aproximación <span class="math display">\[
+Z=\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}\approx\mathcal{N}(0,1)
+\]</span></p></li>
+<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+\begin{array}{cc}
+(-\infty,z_{\alpha/2})\cup(z_{1-\alpha/2},\infty) &amp; \text{(dos colas)} \\
+(z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
+(-\infty,z_\alpha) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+z=\frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}
+\]</span> donde <span class="math inline">\(\bar{x}\)</span> es el valor observado de <span class="math inline">\(\bar{X}\)</span>. El valor <span class="math inline">\(p\)</span> aproximado se calcula como <span class="math display">\[
+\begin{array}{cc}
+p=2\min\{P(Z\leq z),P(Z\geq z)\} &amp; \text{(dos colas)} \\
+p=P(Z\geq z) &amp; \text{(cola derecha)} \\
+p=P(Z\leq z) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\begin{array}{ll}
+\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+\end{array}
+\]</span></p></li>
+</ul>
+<p><strong>Código en R:</strong></p>
+<ul>
+<li>Para obtener el valor de <span class="math inline">\(z_\alpha\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
+<li>Para obtener el valor de <span class="math inline">\(P(Z\leq z)\)</span>, se utiliza la función <code>pnorm(z)</code>.</li>
+<li>Para realizar la prueba se puede utilizar <code>z.test(datos, mu=mu0, sigma.x=sigma, alternative=&quot;two.sided&quot;)</code> del paquete <code>BSDA</code>, cambiando <code>alternative</code> a <code>&quot;less&quot;</code> o <code>&quot;greater&quot;</code> para las pruebas de una cola.</li>
+</ul>
+</section>
+<section id="muestra-grande-y-varianza-desconocida-1" class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="muestra-grande-y-varianza-desconocida-1"><span class="header-section-number">7.1.4</span> Muestra grande y varianza desconocida</h3>
+<ul>
+<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+H_0:\mu=\mu_0
+\]</span> Hipótesis alternativa <span class="math display">\[
+\begin{array}{cc}
+H_1:\mu\neq\mu_0 &amp; \text{(dos colas)} \\
+H_1:\mu_0&lt;\mu &amp; \text{(cola derecha)} \\
+H_1:\mu&lt;\mu_0 &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><strong>Paso 3:</strong> Estadístico de prueba. Cuando el tamaño de la muestra es grande (<span class="math inline">\(n&gt;30\)</span>) y desconocemos <span class="math inline">\(\sigma^2\)</span>, usaremos la aproximación <span class="math display">\[
+Z=\frac{\bar{X}-\mu_0}{S/\sqrt{n}}\approx\mathcal{N}(0,1)
+\]</span></p></li>
+<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+\begin{array}{cc}
+(-\infty,z_{\alpha/2})\cup(z_{1-\alpha/2},\infty) &amp; \text{(dos colas)} \\
+(z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
+(-\infty,z_\alpha) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+z=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}
+\]</span> donde <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(s\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(S\)</span>, respectivamente. El valor <span class="math inline">\(p\)</span> aproximado se calcula como <span class="math display">\[
+\begin{array}{cc}
+p=2\min\{P(Z\leq z),P(Z\geq z)\} &amp; \text{(dos colas)} \\
+p=P(Z\geq z) &amp; \text{(cola derecha)} \\
+p=P(Z\leq z) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\begin{array}{ll}
+\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+\end{array}
+\]</span></p></li>
+</ul>
+<p><strong>Código en R:</strong></p>
+<ul>
+<li>Para obtener el valor de <span class="math inline">\(z_\alpha\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
+<li>Para obtener el valor de <span class="math inline">\(P(Z\leq z)\)</span>, se utiliza la función <code>pnorm(z)</code>.</li>
+<li>Para calcular la prueba con la aproximación normal, se puede obtener el valor de <span class="math inline">\(z\)</span> y calcular directamente su valor <span class="math inline">\(p\)</span> con <code>pnorm()</code>. Alternativamente, <code>t.test(datos, mu=mu0, alternative=&quot;two.sided&quot;)</code> realiza una prueba <span class="math inline">\(t\)</span>, que utiliza una distribución diferente y se aproxima a la normal cuando <span class="math inline">\(n\)</span> es grande.</li>
+</ul>
+</section>
+</section>
+<section id="proporción-de-una-población-1" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="proporción-de-una-población-1"><span class="header-section-number">7.2</span> Proporción de una población</h2>
+<ul>
+<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+H_0:p=p_0
+\]</span> Hipótesis alternativa <span class="math display">\[
+\begin{array}{cc}
+H_1:p\neq p_0 &amp; \text{(dos colas)} \\
+H_1:p_0&lt;p &amp; \text{(cola derecha)} \\
+H_1:p&lt;p_0 &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><strong>Paso 3:</strong> Estadístico de prueba. Cuando la muestra es grande (<span class="math inline">\(n&gt;20\)</span>, <span class="math inline">\(np_0&gt;5\)</span> y <span class="math inline">\(n(1-p_0)&gt;5\)</span>), usaremos la aproximación <span class="math display">\[
+Z=\frac{\bar{X}-p_0}{\sqrt{p_0(1-p_0)/n}}\approx\mathcal{N}(0,1)
+\]</span></p></li>
+<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+\begin{array}{cc}
+(-\infty,z_{\alpha/2})\cup(z_{1-\alpha/2},\infty) &amp; \text{(dos colas)} \\
+(z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
+(-\infty,z_\alpha) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+z=\frac{\bar{x}-p_0}{\sqrt{p_0(1-p_0)/n}}
+\]</span> donde <span class="math inline">\(\bar{x}\)</span> es la proporción observada. El valor <span class="math inline">\(p\)</span> aproximado se calcula como <span class="math display">\[
+\begin{array}{cc}
+p=2\min\{P(Z\leq z),P(Z\geq z)\} &amp; \text{(dos colas)} \\
+p=P(Z\geq z) &amp; \text{(cola derecha)} \\
+p=P(Z\leq z) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\begin{array}{ll}
+\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+\end{array}
+\]</span></p></li>
+</ul>
+<p><strong>Código en R:</strong></p>
+<ul>
+<li>Para obtener el valor de <span class="math inline">\(z_\alpha\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
+<li>Para obtener el valor de <span class="math inline">\(P(Z\leq z)\)</span>, se utiliza la función <code>pnorm(z)</code>.</li>
+<li>Para realizar la prueba de proporciones se puede utilizar <code>prop.test(x, n, p=p0, alternative=&quot;two.sided&quot;, correct=FALSE)</code>, donde <code>x</code> es el número de éxitos. Esta función utiliza una prueba basada en <span class="math inline">\(\chi^2\)</span>, equivalente a la prueba normal de dos colas sin corrección por continuidad. Para las pruebas de una cola, se utiliza <code>&quot;less&quot;</code> o <code>&quot;greater&quot;</code>.</li>
+</ul>
+</section>
+<section id="varianza-de-una-población-normal-1" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="varianza-de-una-población-normal-1"><span class="header-section-number">7.3</span> Varianza de una población normal</h2>
+<ul>
+<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+H_0:\sigma^2=\sigma_0^2
+\]</span> Hipótesis alternativa <span class="math display">\[
+\begin{array}{cc}
+H_1:\sigma^2\neq\sigma_0^2 &amp; \text{(dos colas)} \\
+H_1:\sigma_0^2&lt;\sigma^2 &amp; \text{(cola derecha)} \\
+H_1:\sigma^2&lt;\sigma_0^2 &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><strong>Paso 3:</strong> Estadístico de prueba <span class="math display">\[
+Q=\frac{(n-1)S^2}{\sigma_0^2}\sim\chi^2_{n-1}
+\]</span></p></li>
+<li><p><strong>Paso 4:</strong> Región de rechazo <span class="math display">\[
+\begin{array}{cc}
+(-\infty,\chi^2_{\alpha/2,n-1})\cup(\chi^2_{1-\alpha/2,n-1},\infty) &amp; \text{(dos colas)} \\
+(\chi^2_{1-\alpha,n-1},\infty) &amp; \text{(cola derecha)} \\
+(-\infty,\chi^2_{\alpha,n-1}) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+q=\frac{(n-1)s^2}{\sigma_0^2}
+\]</span> donde <span class="math inline">\(s^2\)</span> es el valor observado de <span class="math inline">\(S^2\)</span>. El valor <span class="math inline">\(p\)</span> correspondiente se calcula como <span class="math display">\[
+\begin{array}{cc}
+p=\min\{1,2\min(P(Q\leq q),P(Q\geq q))\} &amp; \text{(dos colas)} \\
+p=P(Q\geq q) &amp; \text{(cola derecha)} \\
+p=P(Q\leq q) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\begin{array}{ll}
+\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+\end{array}
+\]</span></p></li>
+</ul>
+<p><strong>Código en R:</strong></p>
+<ul>
+<li>Para obtener el valor de <span class="math inline">\(\chi^2_{\alpha,n-1}\)</span>, se utiliza la función <code>qchisq(alpha, n-1)</code>.</li>
+<li>Para obtener el valor de <span class="math inline">\(P(Q\leq q)\)</span>, se utiliza la función <code>pchisq(q, n-1)</code>.</li>
+<li>Para realizar la prueba se puede calcular directamente el estadístico <span class="math inline">\(q\)</span> y su valor <span class="math inline">\(p\)</span> utilizando <code>pchisq()</code>.</li>
+</ul>
+</section>
+<section id="diferencia-de-medias-1" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="diferencia-de-medias-1"><span class="header-section-number">7.4</span> Diferencia de medias</h2>
+<p>Para esta sección consideraremos dos muestras independientes de tamaños <span class="math inline">\(n\)</span> y <span class="math inline">\(m\)</span>.</p>
+<section id="poblaciones-normales-y-varianzas-conocidas-1" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="poblaciones-normales-y-varianzas-conocidas-1"><span class="header-section-number">7.4.1</span> Poblaciones normales y varianzas conocidas</h3>
+<ul>
+<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+H_0:\mu_X-\mu_Y=\delta_0
+\]</span> Hipótesis alternativa <span class="math display">\[
+\begin{array}{cc}
+H_1:\mu_X-\mu_Y\neq\delta_0 &amp; \text{(dos colas)} \\
+H_1:\delta_0&lt;\mu_X-\mu_Y &amp; \text{(cola derecha)} \\
+H_1:\mu_X-\mu_Y&lt;\delta_0 &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><strong>Paso 3:</strong> Estadístico de prueba <span class="math display">\[
+Z=\frac{(\bar{X}-\bar{Y})-\delta_0}{\sqrt{\sigma_X^2/n+\sigma_Y^2/m}}\sim\mathcal{N}(0,1)
+\]</span></p></li>
+<li><p><strong>Paso 4:</strong> Región de rechazo <span class="math display">\[
+\begin{array}{cc}
+(-\infty,z_{\alpha/2})\cup(z_{1-\alpha/2},\infty) &amp; \text{(dos colas)} \\
+(z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
+(-\infty,z_\alpha) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+z=\frac{(\bar{x}-\bar{y})-\delta_0}{\sqrt{\sigma_X^2/n+\sigma_Y^2/m}}
+\]</span> El valor <span class="math inline">\(p\)</span> correspondiente se calcula como <span class="math display">\[
+\begin{array}{cc}
+p=2\min\{P(Z\leq z),P(Z\geq z)\} &amp; \text{(dos colas)} \\
+p=P(Z\geq z) &amp; \text{(cola derecha)} \\
+p=P(Z\leq z) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\begin{array}{ll}
+\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+\end{array}
+\]</span></p></li>
+</ul>
+<p><strong>Código en R:</strong></p>
+<ul>
+<li>Para obtener el valor de <span class="math inline">\(z_\alpha\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
+<li>Para obtener el valor de <span class="math inline">\(P(Z\leq z)\)</span>, se utiliza la función <code>pnorm(z)</code>.</li>
+<li>Para realizar la prueba se puede calcular directamente el estadístico <span class="math inline">\(z\)</span> y su valor <span class="math inline">\(p\)</span> mediante <code>pnorm()</code>.</li>
+</ul>
+</section>
+<section id="poblaciones-normales-varianzas-desconocidas-e-iguales-1" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="poblaciones-normales-varianzas-desconocidas-e-iguales-1"><span class="header-section-number">7.4.2</span> Poblaciones normales, varianzas desconocidas e iguales</h3>
+<ul>
+<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+H_0:\mu_X-\mu_Y=\delta_0
+\]</span> Hipótesis alternativa <span class="math display">\[
+\begin{array}{cc}
+H_1:\mu_X-\mu_Y\neq\delta_0 &amp; \text{(dos colas)} \\
+H_1:\delta_0&lt;\mu_X-\mu_Y &amp; \text{(cola derecha)} \\
+H_1:\mu_X-\mu_Y&lt;\delta_0 &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><strong>Paso 3:</strong> Estadístico de prueba <span class="math display">\[
+T=\frac{(\bar{X}-\bar{Y})-\delta_0}{S_p\sqrt{1/n+1/m}}\sim t_{n+m-2}
+\]</span> donde <span class="math display">\[
+S_p^2=\frac{(n-1)S_X^2+(m-1)S_Y^2}{n+m-2}.
+\]</span></p></li>
+<li><p><strong>Paso 4:</strong> Región de rechazo <span class="math display">\[
+\begin{array}{cc}
+(-\infty,t_{\alpha/2,n+m-2})\cup(t_{1-\alpha/2,n+m-2},\infty) &amp; \text{(dos colas)} \\
+(t_{1-\alpha,n+m-2},\infty) &amp; \text{(cola derecha)} \\
+(-\infty,t_{\alpha,n+m-2}) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+t=\frac{(\bar{x}-\bar{y})-\delta_0}{s_p\sqrt{1/n+1/m}}
+\]</span> donde <span class="math inline">\(s_p\)</span> es el valor observado de <span class="math inline">\(S_p\)</span>. El valor <span class="math inline">\(p\)</span> correspondiente se calcula como <span class="math display">\[
+\begin{array}{cc}
+p=2\min\{P(T\leq t),P(T\geq t)\} &amp; \text{(dos colas)} \\
+p=P(T\geq t) &amp; \text{(cola derecha)} \\
+p=P(T\leq t) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\begin{array}{ll}
+\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+\end{array}
+\]</span></p></li>
+</ul>
+<p><strong>Código en R:</strong></p>
+<ul>
+<li>Para obtener el valor de <span class="math inline">\(t_{\alpha,n+m-2}\)</span>, se utiliza la función <code>qt(alpha, n+m-2)</code>.</li>
+<li>Para obtener el valor de <span class="math inline">\(P(T\leq t)\)</span>, se utiliza la función <code>pt(t, n+m-2)</code>.</li>
+<li>Para realizar la prueba se puede utilizar <code>t.test(datosX, datosY, mu=delta0, var.equal=TRUE, alternative=&quot;two.sided&quot;)</code>. Para las pruebas de una cola, se utiliza <code>&quot;less&quot;</code> o <code>&quot;greater&quot;</code>.</li>
+</ul>
+</section>
+<section id="poblaciones-normales-varianzas-desconocidas-y-diferentes-1" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="poblaciones-normales-varianzas-desconocidas-y-diferentes-1"><span class="header-section-number">7.4.3</span> Poblaciones normales, varianzas desconocidas y diferentes</h3>
+<ul>
+<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+H_0:\mu_X-\mu_Y=\delta_0
+\]</span> Hipótesis alternativa <span class="math display">\[
+\begin{array}{cc}
+H_1:\mu_X-\mu_Y\neq\delta_0 &amp; \text{(dos colas)} \\
+H_1:\delta_0&lt;\mu_X-\mu_Y &amp; \text{(cola derecha)} \\
+H_1:\mu_X-\mu_Y&lt;\delta_0 &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><strong>Paso 3:</strong> Estadístico de prueba. Usaremos la aproximación de Welch-Satterthwaite <span class="math display">\[
+T=\frac{(\bar{X}-\bar{Y})-\delta_0}{\sqrt{S_X^2/n+S_Y^2/m}}\approx t_\nu
+\]</span> donde <span class="math display">\[
+\nu=\frac{(S_X^2/n+S_Y^2/m)^2}{\frac{(S_X^2/n)^2}{n-1}+\frac{(S_Y^2/m)^2}{m-1}}.
+\]</span></p></li>
+<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+\begin{array}{cc}
+(-\infty,t_{\alpha/2,\hat{\nu}})\cup(t_{1-\alpha/2,\hat{\nu}},\infty) &amp; \text{(dos colas)} \\
+(t_{1-\alpha,\hat{\nu}},\infty) &amp; \text{(cola derecha)} \\
+(-\infty,t_{\alpha,\hat{\nu}}) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+t=\frac{(\bar{x}-\bar{y})-\delta_0}{\sqrt{s_X^2/n+s_Y^2/m}}
+\]</span> donde <span class="math inline">\(s_X^2\)</span> y <span class="math inline">\(s_Y^2\)</span> son las varianzas muestrales observadas, y <span class="math display">\[
+\hat{\nu}=\frac{(s_X^2/n+s_Y^2/m)^2}{\frac{(s_X^2/n)^2}{n-1}+\frac{(s_Y^2/m)^2}{m-1}}.
+\]</span> El valor <span class="math inline">\(p\)</span> aproximado se calcula como <span class="math display">\[
+\begin{array}{cc}
+p=2\min\{P(T\leq t),P(T\geq t)\} &amp; \text{(dos colas)} \\
+p=P(T\geq t) &amp; \text{(cola derecha)} \\
+p=P(T\leq t) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span> utilizando la distribución <span class="math inline">\(t_{\hat{\nu}}\)</span>.</p></li>
+<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\begin{array}{ll}
+\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+\end{array}
+\]</span></p></li>
+</ul>
+<p><strong>Código en R:</strong></p>
+<ul>
+<li>Para obtener el valor de <span class="math inline">\(t_{\alpha,\hat{\nu}}\)</span>, se utiliza la función <code>qt(alpha, nu)</code>.</li>
+<li>Para obtener el valor de <span class="math inline">\(P(T\leq t)\)</span>, se utiliza la función <code>pt(t, nu)</code>.</li>
+<li>Para realizar la prueba se puede utilizar <code>t.test(datosX, datosY, mu=delta0, var.equal=FALSE, alternative=&quot;two.sided&quot;)</code>, cambiando <code>alternative</code> a <code>&quot;less&quot;</code> o <code>&quot;greater&quot;</code> para las pruebas de una cola.</li>
+</ul>
+</section>
+<section id="muestras-grandes-y-varianzas-conocidas-1" class="level3" data-number="7.4.4">
+<h3 data-number="7.4.4" class="anchored" data-anchor-id="muestras-grandes-y-varianzas-conocidas-1"><span class="header-section-number">7.4.4</span> Muestras grandes y varianzas conocidas</h3>
+<ul>
+<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+H_0:\mu_X-\mu_Y=\delta_0
+\]</span> Hipótesis alternativa <span class="math display">\[
+\begin{array}{cc}
+H_1:\mu_X-\mu_Y\neq\delta_0 &amp; \text{(dos colas)} \\
+H_1:\delta_0&lt;\mu_X-\mu_Y &amp; \text{(cola derecha)} \\
+H_1:\mu_X-\mu_Y&lt;\delta_0 &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><strong>Paso 3:</strong> Estadístico de prueba. Cuando las muestras son grandes (<span class="math inline">\(n,m\geq40\)</span>) y conocemos las varianzas, usaremos la aproximación <span class="math display">\[
+Z=\frac{(\bar{X}-\bar{Y})-\delta_0}{\sqrt{\sigma_X^2/n+\sigma_Y^2/m}}\approx\mathcal{N}(0,1)
+\]</span></p></li>
+<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+\begin{array}{cc}
+(-\infty,z_{\alpha/2})\cup(z_{1-\alpha/2},\infty) &amp; \text{(dos colas)} \\
+(z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
+(-\infty,z_\alpha) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+z=\frac{(\bar{x}-\bar{y})-\delta_0}{\sqrt{\sigma_X^2/n+\sigma_Y^2/m}}
+\]</span> El valor <span class="math inline">\(p\)</span> aproximado se calcula como <span class="math display">\[
+\begin{array}{cc}
+p=2\min\{P(Z\leq z),P(Z\geq z)\} &amp; \text{(dos colas)} \\
+p=P(Z\geq z) &amp; \text{(cola derecha)} \\
+p=P(Z\leq z) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\begin{array}{ll}
+\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+\end{array}
+\]</span></p></li>
+</ul>
+<p><strong>Código en R:</strong></p>
+<ul>
+<li>Para obtener el valor de <span class="math inline">\(z_\alpha\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
+<li>Para obtener el valor de <span class="math inline">\(P(Z\leq z)\)</span>, se utiliza la función <code>pnorm(z)</code>.</li>
+<li>Para realizar la prueba se puede calcular directamente el estadístico <span class="math inline">\(z\)</span> y su valor <span class="math inline">\(p\)</span> mediante <code>pnorm()</code>.</li>
+</ul>
+</section>
+<section id="muestras-grandes-y-varianzas-desconocidas-1" class="level3" data-number="7.4.5">
+<h3 data-number="7.4.5" class="anchored" data-anchor-id="muestras-grandes-y-varianzas-desconocidas-1"><span class="header-section-number">7.4.5</span> Muestras grandes y varianzas desconocidas</h3>
+<ul>
+<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+H_0:\mu_X-\mu_Y=\delta_0
+\]</span> Hipótesis alternativa <span class="math display">\[
+\begin{array}{cc}
+H_1:\mu_X-\mu_Y\neq\delta_0 &amp; \text{(dos colas)} \\
+H_1:\delta_0&lt;\mu_X-\mu_Y &amp; \text{(cola derecha)} \\
+H_1:\mu_X-\mu_Y&lt;\delta_0 &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><strong>Paso 3:</strong> Estadístico de prueba. Cuando las muestras son grandes (<span class="math inline">\(n,m\geq40\)</span>) y desconocemos las varianzas, usaremos la aproximación <span class="math display">\[
+Z=\frac{(\bar{X}-\bar{Y})-\delta_0}{\sqrt{S_X^2/n+S_Y^2/m}}\approx\mathcal{N}(0,1)
+\]</span></p></li>
+<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+\begin{array}{cc}
+(-\infty,z_{\alpha/2})\cup(z_{1-\alpha/2},\infty) &amp; \text{(dos colas)} \\
+(z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
+(-\infty,z_\alpha) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+z=\frac{(\bar{x}-\bar{y})-\delta_0}{\sqrt{s_X^2/n+s_Y^2/m}}
+\]</span> El valor <span class="math inline">\(p\)</span> aproximado se calcula como <span class="math display">\[
+\begin{array}{cc}
+p=2\min\{P(Z\leq z),P(Z\geq z)\} &amp; \text{(dos colas)} \\
+p=P(Z\geq z) &amp; \text{(cola derecha)} \\
+p=P(Z\leq z) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\begin{array}{ll}
+\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+\end{array}
+\]</span></p></li>
+</ul>
+<p><strong>Código en R:</strong></p>
+<ul>
+<li>Para obtener el valor de <span class="math inline">\(z_\alpha\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
+<li>Para obtener el valor de <span class="math inline">\(P(Z\leq z)\)</span>, se utiliza la función <code>pnorm(z)</code>.</li>
+<li>Para realizar la prueba con la aproximación normal, se puede calcular directamente el estadístico <span class="math inline">\(z\)</span> y su valor <span class="math inline">\(p\)</span> mediante <code>pnorm()</code>.</li>
+</ul>
+</section>
+</section>
+<section id="diferencia-de-proporciones-de-dos-poblaciones-1" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="diferencia-de-proporciones-de-dos-poblaciones-1"><span class="header-section-number">7.5</span> Diferencia de proporciones de dos poblaciones</h2>
+<ul>
+<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+H_0:p_X-p_Y=\delta_0
+\]</span> Hipótesis alternativa <span class="math display">\[
+\begin{array}{cc}
+H_1:p_X-p_Y\neq\delta_0 &amp; \text{(dos colas)} \\
+H_1:\delta_0&lt;p_X-p_Y &amp; \text{(cola derecha)} \\
+H_1:p_X-p_Y&lt;\delta_0 &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><strong>Paso 3:</strong> Estadístico de prueba. Para muestras suficientemente grandes, cuando <span class="math inline">\(\delta_0=0\)</span>, usaremos la aproximación <span class="math display">\[
+Z=\frac{\bar{X}-\bar{Y}}{\sqrt{\hat{p}(1-\hat{p})(1/n+1/m)}}\approx\mathcal{N}(0,1)
+\]</span> donde <span class="math display">\[
+\hat{p}=\frac{n\bar{X}+m\bar{Y}}{n+m}
+\]</span> es la proporción combinada.</p></li>
+<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+\begin{array}{cc}
+(-\infty,z_{\alpha/2})\cup(z_{1-\alpha/2},\infty) &amp; \text{(dos colas)} \\
+(z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
+(-\infty,z_\alpha) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+z=\frac{\bar{x}-\bar{y}}{\sqrt{\hat{p}(1-\hat{p})(1/n+1/m)}}
+\]</span> donde <span class="math display">\[
+\hat{p}=\frac{n\bar{x}+m\bar{y}}{n+m}.
+\]</span> El valor <span class="math inline">\(p\)</span> aproximado se calcula como <span class="math display">\[
+\begin{array}{cc}
+p=2\min\{P(Z\leq z),P(Z\geq z)\} &amp; \text{(dos colas)} \\
+p=P(Z\geq z) &amp; \text{(cola derecha)} \\
+p=P(Z\leq z) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\begin{array}{ll}
+\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+\end{array}
+\]</span></p></li>
+</ul>
+<p><strong>Código en R:</strong></p>
+<ul>
+<li>Para obtener el valor de <span class="math inline">\(z_\alpha\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
+<li>Para obtener el valor de <span class="math inline">\(P(Z\leq z)\)</span>, se utiliza la función <code>pnorm(z)</code>.</li>
+<li>Para realizar la prueba de igualdad de proporciones se puede utilizar <code>prop.test(c(exitosX, exitosY), c(n, m), alternative=&quot;two.sided&quot;, correct=FALSE)</code>. Para las pruebas de una cola, se utiliza <code>&quot;less&quot;</code> o <code>&quot;greater&quot;</code>.</li>
+</ul>
+</section>
+<section id="cociente-de-varianzas-de-dos-poblaciones-normales-1" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="cociente-de-varianzas-de-dos-poblaciones-normales-1"><span class="header-section-number">7.6</span> Cociente de varianzas de dos poblaciones normales</h2>
+<ul>
+<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+H_0:\frac{\sigma_X^2}{\sigma_Y^2}=r_0
+\]</span> Hipótesis alternativa <span class="math display">\[
+\begin{array}{cc}
+H_1:\frac{\sigma_X^2}{\sigma_Y^2}\neq r_0 &amp; \text{(dos colas)} \\
+H_1:r_0&lt;\frac{\sigma_X^2}{\sigma_Y^2} &amp; \text{(cola derecha)} \\
+H_1:\frac{\sigma_X^2}{\sigma_Y^2}&lt;r_0 &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><strong>Paso 3:</strong> Estadístico de prueba <span class="math display">\[
+F=\frac{S_X^2/S_Y^2}{r_0}\sim F_{n-1,m-1}
+\]</span></p></li>
+<li><p><strong>Paso 4:</strong> Región de rechazo <span class="math display">\[
+\begin{array}{cc}
+(0,f_{\alpha/2,n-1,m-1})\cup(f_{1-\alpha/2,n-1,m-1},\infty) &amp; \text{(dos colas)} \\
+(f_{1-\alpha,n-1,m-1},\infty) &amp; \text{(cola derecha)} \\
+(0,f_{\alpha,n-1,m-1}) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+f=\frac{s_X^2/s_Y^2}{r_0}
+\]</span> donde <span class="math inline">\(s_X^2\)</span> y <span class="math inline">\(s_Y^2\)</span> son las varianzas muestrales observadas. El valor <span class="math inline">\(p\)</span> correspondiente se calcula como <span class="math display">\[
+\begin{array}{cc}
+p=\min\{1,2\min(P(F\leq f),P(F\geq f))\} &amp; \text{(dos colas)} \\
+p=P(F\geq f) &amp; \text{(cola derecha)} \\
+p=P(F\leq f) &amp; \text{(cola izquierda)}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\begin{array}{ll}
+\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+\end{array}
+\]</span></p></li>
+</ul>
+<p><strong>Código en R:</strong></p>
+<ul>
+<li>Para obtener el valor de <span class="math inline">\(f_{\alpha,n-1,m-1}\)</span>, se utiliza la función <code>qf(alpha, n-1, m-1)</code>.</li>
+<li>Para obtener el valor de <span class="math inline">\(P(F\leq f)\)</span>, se utiliza la función <code>pf(f, n-1, m-1)</code>.</li>
+<li>Para realizar la prueba se puede utilizar <code>var.test(datosX, datosY, ratio=r0, alternative=&quot;two.sided&quot;)</code>. Para las pruebas de una cola, se utiliza <code>&quot;less&quot;</code> o <code>&quot;greater&quot;</code>.</li>
+</ul>
 </section>
 </section>
 
