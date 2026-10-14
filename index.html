@@ -3116,11 +3116,11 @@ H_{1}:\mu &lt; \mu_0 &amp; \text{(cola izquierda)}
 <li><p><strong>Paso 3:</strong> Estadístico de prueba <span class="math display">\[
 Z = \frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}\sim \mathcal{N}(0,1)
 \]</span></p></li>
-<li><p><strong>Paso 4:</strong> Región de no rechazo <span class="math display">\[
+<li><p><strong>Paso 4:</strong> Región de rechazo <span class="math display">\[
 \begin{array}{cc}
-(z_{\alpha/2}, z_{1-\alpha/2}) &amp; \text{(dos colas)} \\
-(-\infty, z_{1-\alpha}) &amp; \text{(cola derecha)} \\
-(z_{\alpha}, \infty) &amp; \text{(cola izquierda)}
+(-\infty, z_{\alpha/2})\cup (z_{1-\alpha/2}, \infty) &amp; \text{(dos colas)} \\
+(z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
+(-\infty, z_{\alpha}) &amp; \text{(cola izquierda)}
 \end{array}
 \]</span></p></li>
 <li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
@@ -3138,7 +3138,7 @@ p = P(Z\leq z) &amp; \text{(cola izquierda)}
 <ul>
 <li>Para obtener el valor de <span class="math inline">\(z_{\alpha}\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
 <li>Para obtener el valor de <span class="math inline">\(P(Z\leq z)\)</span>, se utiliza la función <code>pnorm(z)</code>.</li>
-<li>Para realizar la prueba de hipótesis se puede utilizar la función <code>z.test(datos, mu=mu0, sigma=sigma, alternative=&quot;two.sided&quot;)</code> del paquete <code>BSDA</code>. Para las pruebas por la izquierda o por la derecha, se puede cambiar el argumento <code>alternative</code> a <code>&quot;less&quot;</code> o <code>&quot;greater&quot;</code>, respectivamente.</li>
+<li>Para realizar la prueba de hipótesis se puede utilizar la función <code>z.test(datos, mu=mu0, sigma.x=sigma, alternative=&quot;two.sided&quot;)</code> del paquete <code>BSDA</code>. Para las pruebas por la izquierda o por la derecha, se puede cambiar el argumento <code>alternative</code> a <code>&quot;less&quot;</code> o <code>&quot;greater&quot;</code>, respectivamente.</li>
 </ul>
 </section>
 </section>
