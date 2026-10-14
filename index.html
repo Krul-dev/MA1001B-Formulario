@@ -2367,6 +2367,7 @@ window.Quarto = {
   <li><a href="#diferencia-de-medias-1" id="toc-diferencia-de-medias-1" class="nav-link" data-scroll-target="#diferencia-de-medias-1"><span class="header-section-number">7.4</span> Diferencia de medias</a></li>
   <li><a href="#diferencia-de-proporciones-de-dos-poblaciones-1" id="toc-diferencia-de-proporciones-de-dos-poblaciones-1" class="nav-link" data-scroll-target="#diferencia-de-proporciones-de-dos-poblaciones-1"><span class="header-section-number">7.5</span> Diferencia de proporciones de dos poblaciones</a></li>
   <li><a href="#cociente-de-varianzas-de-dos-poblaciones-normales-1" id="toc-cociente-de-varianzas-de-dos-poblaciones-normales-1" class="nav-link" data-scroll-target="#cociente-de-varianzas-de-dos-poblaciones-normales-1"><span class="header-section-number">7.6</span> Cociente de varianzas de dos poblaciones normales</a></li>
+  <li><a href="#independencia-de-dos-variables-categóricas" id="toc-independencia-de-dos-variables-categóricas" class="nav-link" data-scroll-target="#independencia-de-dos-variables-categóricas"><span class="header-section-number">7.7</span> Independencia de dos variables categóricas</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -3633,6 +3634,44 @@ p=P(F\leq f) &amp; \text{(cola izquierda)}
 <li>Para obtener el valor de <span class="math inline">\(f_{\alpha,n-1,m-1}\)</span>, se utiliza la función <code>qf(alpha, n-1, m-1)</code>.</li>
 <li>Para obtener el valor de <span class="math inline">\(P(F\leq f)\)</span>, se utiliza la función <code>pf(f, n-1, m-1)</code>.</li>
 <li>Para realizar la prueba se puede utilizar <code>var.test(datosX, datosY, ratio=r0, alternative=&quot;two.sided&quot;)</code>. Para las pruebas de una cola, se utiliza <code>&quot;less&quot;</code> o <code>&quot;greater&quot;</code>.</li>
+</ul>
+</section>
+<section id="independencia-de-dos-variables-categóricas" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="independencia-de-dos-variables-categóricas"><span class="header-section-number">7.7</span> Independencia de dos variables categóricas</h2>
+<p>Consideremos una muestra aleatoria de tamaño <span class="math inline">\(n\)</span> de una población, en la que observamos dos variables categóricas <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, con <span class="math inline">\(r\)</span> y <span class="math inline">\(c\)</span> categorías, respectivamente. Los resultados se organizan en una tabla de contingencia de <span class="math inline">\(r\)</span> filas y <span class="math inline">\(c\)</span> columnas.</p>
+<p>Sea <span class="math inline">\(O_{ij}\)</span> la frecuencia observada en la celda <span class="math inline">\((i,j)\)</span>, y sean <span class="math inline">\(O_{i\cdot}\)</span> y <span class="math inline">\(O_{\cdot j}\)</span> las frecuencias marginales correspondientes.</p>
+<ul>
+<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+H_0:\text{$X$ e $Y$ son independientes}
+\]</span> Hipótesis alternativa <span class="math display">\[
+H_1:\text{$X$ e $Y$ no son independientes}
+\]</span></p></li>
+<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><strong>Paso 3:</strong> Estadístico de prueba. Bajo la hipótesis nula, las frecuencias esperadas se calculan mediante <span class="math display">\[
+E_{ij}=\frac{O_{i\cdot}O_{\cdot j}}{n}
+\]</span> y el estadístico de prueba es <span class="math display">\[
+Q=\sum_{i=1}^{r}\sum_{j=1}^{c}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\approx\chi^2_{(r-1)(c-1)}
+\]</span> donde <span class="math inline">\((r-1)(c-1)\)</span> son los grados de libertad. Esta aproximación se utiliza cuando las frecuencias esperadas son suficientemente grandes (usualmente <span class="math inline">\(E_{ij}\geq5\)</span>).</p></li>
+<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+(\chi^2_{1-\alpha,(r-1)(c-1)},\infty)
+\]</span></p></li>
+<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+q=\sum_{i=1}^{r}\sum_{j=1}^{c}\frac{(o_{ij}-e_{ij})^2}{e_{ij}}
+\]</span> donde <span class="math inline">\(o_{ij}\)</span> y <span class="math inline">\(e_{ij}\)</span> son las frecuencias observadas y esperadas, respectivamente. El valor <span class="math inline">\(p\)</span> aproximado se calcula como <span class="math display">\[
+p=P(Q\geq q)
+\]</span> utilizando la distribución <span class="math inline">\(\chi^2_{(r-1)(c-1)}\)</span>.</p></li>
+<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\begin{array}{ll}
+\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+\end{array}
+\]</span></p></li>
+</ul>
+<p><strong>Código en R:</strong></p>
+<ul>
+<li>Para obtener el valor de <span class="math inline">\(\chi^2_{1-\alpha,(r-1)(c-1)}\)</span>, se utiliza la función <code>qchisq(1-alpha, (r-1)*(c-1))</code>.</li>
+<li>Para obtener el valor de <span class="math inline">\(P(Q\geq q)\)</span>, se utiliza la función <code>pchisq(q, (r-1)*(c-1), lower.tail=FALSE)</code>.</li>
+<li>Para realizar la prueba de hipótesis se puede utilizar la función <code>chisq.test(tabla, correct=FALSE)</code>, donde <code>tabla</code> es una tabla de contingencia con las frecuencias observadas. El argumento <code>correct=FALSE</code> evita la corrección de continuidad de Yates para tablas de <span class="math inline">\(2\times2\)</span>.</li>
 </ul>
 </section>
 </section>
