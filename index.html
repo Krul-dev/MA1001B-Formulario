@@ -3007,46 +3007,53 @@ F=\frac{S_X^2/\sigma_X^2}{S_Y^2/\sigma_Y^2}\sim F_{n-1,m-1}
 <section id="prueba-de-hipótesis" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Prueba de hipótesis</h1>
 <p>El procedimiento estándar de una prueba de hipótesis consiste en los siguientes pasos:</p>
+<p><strong>Paso 1:</strong> Hipótesis y Distribución Muestral.</p>
 <ul>
-<li><strong>Paso 1:</strong> Plantear la hipótesis nula <span class="math inline">\(H_0\)</span> y la hipótesis alternativa <span class="math inline">\(H_1\)</span>.</li>
-<li><strong>Paso 2:</strong> Elegir un nivel de significancia <span class="math inline">\(\alpha\)</span>.</li>
-<li><strong>Paso 3:</strong> Determinar el estadístico de prueba y su distribución bajo la hipótesis nula.</li>
-<li><strong>Paso 4:</strong> Determinar la región de rechazo y no rechazo.</li>
-<li><strong>Paso 5:</strong> Calcular el valor del estadístico de prueba y su valor <span class="math inline">\(p\)</span> correspondiente.</li>
-<li><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
-\begin{array}{ll}
-\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
-\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
-\end{array}
-\]</span></li>
+<li>Plantear la hipótesis nula <span class="math inline">\(H_{0}\)</span> y la hipótesis alternativa <span class="math inline">\(H_{1}\)</span>.</li>
+<li>Determinar la distribución muestral del parámetro de prueba que se utilizará.</li>
 </ul>
-<p>Una vez terminada la prueba es importante interpretar los resultados en el contexto del problema.</p>
+<p><strong>Paso 2:</strong> Regla de decisión.</p>
+<ul>
+<li>Elegir un nivel de significancia <span class="math inline">\(\alpha\)</span>.</li>
+<li>Determinar el valor de frontera o crítico que define la región de rechazo y no rechazo.</li>
+</ul>
+<p><strong>Paso 3:</strong> Análisis de la muestra.</p>
+<ul>
+<li>Calcular el valor del estadístico de prueba.</li>
+<li>Calcular el valor <span class="math inline">\(p\)</span> correspondiente.</li>
+</ul>
+<p><strong>Paso 4:</strong> Conclusiones.</p>
+<ul>
+<li>Determinar si se rechaza o no la hipótesis nula.</li>
+<li>Interpretar los resultados en el contexto del problema.</li>
+</ul>
 <section id="media-de-una-población-1" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="media-de-una-población-1"><span class="header-section-number">7.1</span> Media de una población</h2>
 <section id="población-normal-y-varianza-conocida-1" class="level3" data-number="7.1.1">
 <h3 data-number="7.1.1" class="anchored" data-anchor-id="población-normal-y-varianza-conocida-1"><span class="header-section-number">7.1.1</span> Población normal y varianza conocida</h3>
-<ul>
-<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+<p><strong>Paso 1:</strong> Hipótesis y Distribución Muestral.</p>
+<p>Hipótesis nula: <span class="math display">\[
 H_{0}:\mu=\mu_0
-\]</span> Hipótesis alternativa <span class="math display">\[
+\]</span> Hipótesis alternativa: <span class="math display">\[
 \begin{array}{cc}
 H_{1}:\mu\neq\mu_0 &amp; \text{(dos colas)} \\
 H_{1}:\mu_0 &lt; \mu &amp; \text{(cola derecha)} \\
 H_{1}:\mu &lt; \mu_0 &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
-<li><p><strong>Paso 3:</strong> Estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p>Distribución muestral: <span class="math display">\[
 Z = \frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}\sim \mathcal{N}(0,1)
-\]</span></p></li>
-<li><p><strong>Paso 4:</strong> Región de rechazo <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 2:</strong> Regla de decisión.</p>
+<p>A partir del nivel de significancia <span class="math inline">\(\alpha\)</span> dado, se determina el valor de frontera y la región de rechazo: <span class="math display">\[
 \begin{array}{cc}
 (-\infty, z_{\alpha/2})\cup (z_{1-\alpha/2}, \infty) &amp; \text{(dos colas)} \\
 (z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
 (-\infty, z_{\alpha}) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 3:</strong> Análisis de la muestra.</p>
+<p>Se calcula el valor del estadístico de prueba: <span class="math display">\[
 z = \frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}
 \]</span> donde <span class="math inline">\(\bar{x}\)</span> es el valor observado de <span class="math inline">\(\bar{X}\)</span>. El valor <span class="math inline">\(p\)</span> correspondiente se calcula como <span class="math display">\[
 \begin{array}{cc}
@@ -3054,14 +3061,15 @@ p = 2 \min\{P(Z\leq z), P(Z\geq z)\} &amp; \text{(dos colas)} \\
 p = P(Z\geq z) &amp; \text{(cola derecha)} \\
 p = P(Z\leq z) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
-\begin{array}{ll}
-\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
-\text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
-\end{array}
-\]</span></p></li>
-</ul>
+\]</span></p>
+<p><strong>Paso 4:</strong> Conclusiones.</p>
+<p>Si el estadístico de prueba cae dentro de la región de rechazo, entonces rechazamos la hipótesis nula.</p>
+<p>De manera equivalente, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
+   \begin{array}{ll}
+   \text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
+   \text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
+   \end{array}
+   \]</span></p>
 <p><strong>Código en R:</strong></p>
 <ul>
 <li>Para obtener el valor de <span class="math inline">\(z_{\alpha}\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
@@ -3071,28 +3079,29 @@ p = P(Z\leq z) &amp; \text{(cola izquierda)}
 </section>
 <section id="población-normal-y-varianza-desconocida-1" class="level3" data-number="7.1.2">
 <h3 data-number="7.1.2" class="anchored" data-anchor-id="población-normal-y-varianza-desconocida-1"><span class="header-section-number">7.1.2</span> Población normal y varianza desconocida</h3>
-<ul>
-<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+<p><strong>Paso 1:</strong> Hipótesis y Distribución Muestral.</p>
+<p>Hipótesis nula: <span class="math display">\[
 H_0:\mu=\mu_0
-\]</span> Hipótesis alternativa <span class="math display">\[
+\]</span> Hipótesis alternativa: <span class="math display">\[
 \begin{array}{cc}
 H_1:\mu\neq\mu_0 &amp; \text{(dos colas)} \\
 H_1:\mu_0&lt;\mu &amp; \text{(cola derecha)} \\
 H_1:\mu&lt;\mu_0 &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
-<li><p><strong>Paso 3:</strong> Estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p>Distribución muestral: <span class="math display">\[
 T=\frac{\bar{X}-\mu_0}{S/\sqrt{n}}\sim t_{n-1}
-\]</span></p></li>
-<li><p><strong>Paso 4:</strong> Región de rechazo <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 2:</strong> Regla de decisión.</p>
+<p>A partir del nivel de significancia <span class="math inline">\(\alpha\)</span> dado, se determina el valor de frontera y la región de rechazo: <span class="math display">\[
 \begin{array}{cc}
 (-\infty,t_{\alpha/2,n-1})\cup(t_{1-\alpha/2,n-1},\infty) &amp; \text{(dos colas)} \\
 (t_{1-\alpha,n-1},\infty) &amp; \text{(cola derecha)} \\
 (-\infty,t_{\alpha,n-1}) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 3:</strong> Análisis de la muestra.</p>
+<p>Se calcula el valor del estadístico de prueba: <span class="math display">\[
 t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}
 \]</span> donde <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(s\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(S\)</span>, respectivamente. El valor <span class="math inline">\(p\)</span> correspondiente se calcula como <span class="math display">\[
 \begin{array}{cc}
@@ -3100,14 +3109,15 @@ p=2\min\{P(T\leq t),P(T\geq t)\} &amp; \text{(dos colas)} \\
 p=P(T\geq t) &amp; \text{(cola derecha)} \\
 p=P(T\leq t) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 4:</strong> Conclusiones.</p>
+<p>Si el estadístico de prueba cae dentro de la región de rechazo, entonces rechazamos la hipótesis nula.</p>
+<p>De manera equivalente, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
 \begin{array}{ll}
-\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
 \text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
 \end{array}
-\]</span></p></li>
-</ul>
+\]</span></p>
 <p><strong>Código en R:</strong></p>
 <ul>
 <li>Para obtener el valor de <span class="math inline">\(t_{\alpha,n-1}\)</span>, se utiliza la función <code>qt(alpha, n-1)</code>.</li>
@@ -3117,28 +3127,29 @@ p=P(T\leq t) &amp; \text{(cola izquierda)}
 </section>
 <section id="muestra-grande-y-varianza-conocida-1" class="level3" data-number="7.1.3">
 <h3 data-number="7.1.3" class="anchored" data-anchor-id="muestra-grande-y-varianza-conocida-1"><span class="header-section-number">7.1.3</span> Muestra grande y varianza conocida</h3>
-<ul>
-<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+<p><strong>Paso 1:</strong> Hipótesis y Distribución Muestral.</p>
+<p>Hipótesis nula: <span class="math display">\[
 H_0:\mu=\mu_0
-\]</span> Hipótesis alternativa <span class="math display">\[
+\]</span> Hipótesis alternativa: <span class="math display">\[
 \begin{array}{cc}
 H_1:\mu\neq\mu_0 &amp; \text{(dos colas)} \\
 H_1:\mu_0&lt;\mu &amp; \text{(cola derecha)} \\
 H_1:\mu&lt;\mu_0 &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
-<li><p><strong>Paso 3:</strong> Estadístico de prueba. Cuando el tamaño de la muestra es grande (<span class="math inline">\(n&gt;30\)</span>) y conocemos <span class="math inline">\(\sigma^2\)</span>, usaremos la aproximación <span class="math display">\[
+\]</span></p>
+<p>Distribución muestral: Cuando el tamaño de la muestra es grande (<span class="math inline">\(n&gt;30\)</span>) y conocemos <span class="math inline">\(\sigma^2\)</span>, usaremos la aproximación <span class="math display">\[
 Z=\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}\approx\mathcal{N}(0,1)
-\]</span></p></li>
-<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 2:</strong> Regla de decisión.</p>
+<p>A partir del nivel de significancia <span class="math inline">\(\alpha\)</span> dado, se determina el valor de frontera y la región de rechazo: <span class="math display">\[
 \begin{array}{cc}
 (-\infty,z_{\alpha/2})\cup(z_{1-\alpha/2},\infty) &amp; \text{(dos colas)} \\
 (z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
 (-\infty,z_\alpha) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 3:</strong> Análisis de la muestra.</p>
+<p>Se calcula el valor del estadístico de prueba: <span class="math display">\[
 z=\frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}
 \]</span> donde <span class="math inline">\(\bar{x}\)</span> es el valor observado de <span class="math inline">\(\bar{X}\)</span>. El valor <span class="math inline">\(p\)</span> aproximado se calcula como <span class="math display">\[
 \begin{array}{cc}
@@ -3146,14 +3157,15 @@ p=2\min\{P(Z\leq z),P(Z\geq z)\} &amp; \text{(dos colas)} \\
 p=P(Z\geq z) &amp; \text{(cola derecha)} \\
 p=P(Z\leq z) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 4:</strong> Conclusiones.</p>
+<p>Si el estadístico de prueba cae dentro de la región de rechazo, entonces rechazamos la hipótesis nula.</p>
+<p>De manera equivalente, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
 \begin{array}{ll}
-\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
 \text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
 \end{array}
-\]</span></p></li>
-</ul>
+\]</span></p>
 <p><strong>Código en R:</strong></p>
 <ul>
 <li>Para obtener el valor de <span class="math inline">\(z_\alpha\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
@@ -3163,28 +3175,29 @@ p=P(Z\leq z) &amp; \text{(cola izquierda)}
 </section>
 <section id="muestra-grande-y-varianza-desconocida-1" class="level3" data-number="7.1.4">
 <h3 data-number="7.1.4" class="anchored" data-anchor-id="muestra-grande-y-varianza-desconocida-1"><span class="header-section-number">7.1.4</span> Muestra grande y varianza desconocida</h3>
-<ul>
-<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+<p><strong>Paso 1:</strong> Hipótesis y Distribución Muestral.</p>
+<p>Hipótesis nula: <span class="math display">\[
 H_0:\mu=\mu_0
-\]</span> Hipótesis alternativa <span class="math display">\[
+\]</span> Hipótesis alternativa: <span class="math display">\[
 \begin{array}{cc}
 H_1:\mu\neq\mu_0 &amp; \text{(dos colas)} \\
 H_1:\mu_0&lt;\mu &amp; \text{(cola derecha)} \\
 H_1:\mu&lt;\mu_0 &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
-<li><p><strong>Paso 3:</strong> Estadístico de prueba. Cuando el tamaño de la muestra es grande (<span class="math inline">\(n&gt;30\)</span>) y desconocemos <span class="math inline">\(\sigma^2\)</span>, usaremos la aproximación <span class="math display">\[
+\]</span></p>
+<p>Distribución muestral: Cuando el tamaño de la muestra es grande (<span class="math inline">\(n&gt;30\)</span>) y desconocemos <span class="math inline">\(\sigma^2\)</span>, usaremos la aproximación <span class="math display">\[
 Z=\frac{\bar{X}-\mu_0}{S/\sqrt{n}}\approx\mathcal{N}(0,1)
-\]</span></p></li>
-<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 2:</strong> Regla de decisión.</p>
+<p>A partir del nivel de significancia <span class="math inline">\(\alpha\)</span> dado, se determina el valor de frontera y la región de rechazo: <span class="math display">\[
 \begin{array}{cc}
 (-\infty,z_{\alpha/2})\cup(z_{1-\alpha/2},\infty) &amp; \text{(dos colas)} \\
 (z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
 (-\infty,z_\alpha) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 3:</strong> Análisis de la muestra.</p>
+<p>Se calcula el valor del estadístico de prueba: <span class="math display">\[
 z=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}
 \]</span> donde <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(s\)</span> son los valores observados de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(S\)</span>, respectivamente. El valor <span class="math inline">\(p\)</span> aproximado se calcula como <span class="math display">\[
 \begin{array}{cc}
@@ -3192,14 +3205,15 @@ p=2\min\{P(Z\leq z),P(Z\geq z)\} &amp; \text{(dos colas)} \\
 p=P(Z\geq z) &amp; \text{(cola derecha)} \\
 p=P(Z\leq z) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 4:</strong> Conclusiones.</p>
+<p>Si el estadístico de prueba cae dentro de la región de rechazo, entonces rechazamos la hipótesis nula.</p>
+<p>De manera equivalente, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
 \begin{array}{ll}
-\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
 \text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
 \end{array}
-\]</span></p></li>
-</ul>
+\]</span></p>
 <p><strong>Código en R:</strong></p>
 <ul>
 <li>Para obtener el valor de <span class="math inline">\(z_\alpha\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
@@ -3210,28 +3224,29 @@ p=P(Z\leq z) &amp; \text{(cola izquierda)}
 </section>
 <section id="proporción-de-una-población-1" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="proporción-de-una-población-1"><span class="header-section-number">7.2</span> Proporción de una población</h2>
-<ul>
-<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+<p><strong>Paso 1:</strong> Hipótesis y Distribución Muestral.</p>
+<p>Hipótesis nula: <span class="math display">\[
 H_0:p=p_0
-\]</span> Hipótesis alternativa <span class="math display">\[
+\]</span> Hipótesis alternativa: <span class="math display">\[
 \begin{array}{cc}
 H_1:p\neq p_0 &amp; \text{(dos colas)} \\
 H_1:p_0&lt;p &amp; \text{(cola derecha)} \\
 H_1:p&lt;p_0 &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
-<li><p><strong>Paso 3:</strong> Estadístico de prueba. Cuando el tamaño de la muestra es lo suficientemente grande (<span class="math inline">\(n&gt;20\)</span>, <span class="math inline">\(np_0&gt;5\)</span> y <span class="math inline">\(n(1-p_0)&gt;5\)</span>), usaremos la aproximación <span class="math display">\[
+\]</span></p>
+<p>Distribución muestral: Cuando el tamaño de la muestra es lo suficientemente grande (<span class="math inline">\(n&gt;20\)</span>, <span class="math inline">\(np_0&gt;5\)</span> y <span class="math inline">\(n(1-p_0)&gt;5\)</span>), usaremos la aproximación <span class="math display">\[
 Z=\frac{\bar{X}-p_0}{\sqrt{p_0(1-p_0)/n}}\approx\mathcal{N}(0,1)
-\]</span></p></li>
-<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 2:</strong> Regla de decisión.</p>
+<p>A partir del nivel de significancia <span class="math inline">\(\alpha\)</span> dado, se determina el valor de frontera y la región de rechazo: <span class="math display">\[
 \begin{array}{cc}
 (-\infty,z_{\alpha/2})\cup(z_{1-\alpha/2},\infty) &amp; \text{(dos colas)} \\
 (z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
 (-\infty,z_\alpha) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 3:</strong> Análisis de la muestra.</p>
+<p>Se calcula el valor del estadístico de prueba: <span class="math display">\[
 z=\frac{\bar{x}-p_0}{\sqrt{p_0(1-p_0)/n}}
 \]</span> donde <span class="math inline">\(\bar{x}\)</span> es la proporción observada. El valor <span class="math inline">\(p\)</span> aproximado se calcula como <span class="math display">\[
 \begin{array}{cc}
@@ -3239,14 +3254,15 @@ p=2\min\{P(Z\leq z),P(Z\geq z)\} &amp; \text{(dos colas)} \\
 p=P(Z\geq z) &amp; \text{(cola derecha)} \\
 p=P(Z\leq z) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 4:</strong> Conclusiones.</p>
+<p>Si el estadístico de prueba cae dentro de la región de rechazo, entonces rechazamos la hipótesis nula.</p>
+<p>De manera equivalente, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
 \begin{array}{ll}
-\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
 \text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
 \end{array}
-\]</span></p></li>
-</ul>
+\]</span></p>
 <p><strong>Código en R:</strong></p>
 <ul>
 <li>Para obtener el valor de <span class="math inline">\(z_\alpha\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
@@ -3256,28 +3272,29 @@ p=P(Z\leq z) &amp; \text{(cola izquierda)}
 </section>
 <section id="varianza-de-una-población-normal-1" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="varianza-de-una-población-normal-1"><span class="header-section-number">7.3</span> Varianza de una población normal</h2>
-<ul>
-<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+<p><strong>Paso 1:</strong> Hipótesis y Distribución Muestral.</p>
+<p>Hipótesis nula: <span class="math display">\[
 H_0:\sigma^2=\sigma_0^2
-\]</span> Hipótesis alternativa <span class="math display">\[
+\]</span> Hipótesis alternativa: <span class="math display">\[
 \begin{array}{cc}
 H_1:\sigma^2\neq\sigma_0^2 &amp; \text{(dos colas)} \\
 H_1:\sigma_0^2&lt;\sigma^2 &amp; \text{(cola derecha)} \\
 H_1:\sigma^2&lt;\sigma_0^2 &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
-<li><p><strong>Paso 3:</strong> Estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p>Distribución muestral: <span class="math display">\[
 Q=\frac{(n-1)S^2}{\sigma_0^2}\sim\chi^2_{n-1}
-\]</span></p></li>
-<li><p><strong>Paso 4:</strong> Región de rechazo <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 2:</strong> Regla de decisión.</p>
+<p>A partir del nivel de significancia <span class="math inline">\(\alpha\)</span> dado, se determina el valor de frontera y la región de rechazo: <span class="math display">\[
 \begin{array}{cc}
 (-\infty,\chi^2_{\alpha/2,n-1})\cup(\chi^2_{1-\alpha/2,n-1},\infty) &amp; \text{(dos colas)} \\
 (\chi^2_{1-\alpha,n-1},\infty) &amp; \text{(cola derecha)} \\
 (-\infty,\chi^2_{\alpha,n-1}) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 3:</strong> Análisis de la muestra.</p>
+<p>Se calcula el valor del estadístico de prueba: <span class="math display">\[
 q=\frac{(n-1)s^2}{\sigma_0^2}
 \]</span> donde <span class="math inline">\(s^2\)</span> es el valor observado de <span class="math inline">\(S^2\)</span>. El valor <span class="math inline">\(p\)</span> correspondiente se calcula como <span class="math display">\[
 \begin{array}{cc}
@@ -3285,14 +3302,15 @@ p=2\min\{P(Q\leq q),P(Q\geq q)\} &amp; \text{(dos colas)} \\
 p=P(Q\geq q) &amp; \text{(cola derecha)} \\
 p=P(Q\leq q) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 4:</strong> Conclusiones.</p>
+<p>Si el estadístico de prueba cae dentro de la región de rechazo, entonces rechazamos la hipótesis nula.</p>
+<p>De manera equivalente, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
 \begin{array}{ll}
-\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
 \text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
 \end{array}
-\]</span></p></li>
-</ul>
+\]</span></p>
 <p><strong>Código en R:</strong></p>
 <ul>
 <li>Para obtener el valor de <span class="math inline">\(\chi^2_{\alpha,n-1}\)</span>, se utiliza la función <code>qchisq(alpha, n-1)</code>.</li>
@@ -3304,28 +3322,29 @@ p=P(Q\leq q) &amp; \text{(cola izquierda)}
 <p>Para esta sección consideraremos dos muestras independientes de tamaños <span class="math inline">\(n\)</span> y <span class="math inline">\(m\)</span>.</p>
 <section id="poblaciones-normales-y-varianzas-conocidas-1" class="level3" data-number="7.4.1">
 <h3 data-number="7.4.1" class="anchored" data-anchor-id="poblaciones-normales-y-varianzas-conocidas-1"><span class="header-section-number">7.4.1</span> Poblaciones normales y varianzas conocidas</h3>
-<ul>
-<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+<p><strong>Paso 1:</strong> Hipótesis y Distribución Muestral.</p>
+<p>Hipótesis nula: <span class="math display">\[
 H_0:\mu_X =\mu_Y
-\]</span> Hipótesis alternativa <span class="math display">\[
+\]</span> Hipótesis alternativa: <span class="math display">\[
 \begin{array}{cc}
 H_1:\mu_X \neq \mu_Y &amp; \text{(dos colas)} \\
 H_1:\mu_Y&lt;\mu_X &amp; \text{(cola derecha)} \\
 H_1:\mu_X &lt; \mu_Y &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
-<li><p><strong>Paso 3:</strong> Estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p>Distribución muestral: <span class="math display">\[
 Z=\frac{\bar{X}-\bar{Y}}{\sqrt{\sigma_X^2/n+\sigma_Y^2/m}}\sim\mathcal{N}(0,1)
-\]</span></p></li>
-<li><p><strong>Paso 4:</strong> Región de rechazo <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 2:</strong> Regla de decisión.</p>
+<p>A partir del nivel de significancia <span class="math inline">\(\alpha\)</span> dado, se determina el valor de frontera y la región de rechazo: <span class="math display">\[
 \begin{array}{cc}
 (-\infty,z_{\alpha/2})\cup(z_{1-\alpha/2},\infty) &amp; \text{(dos colas)} \\
 (z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
 (-\infty,z_\alpha) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 3:</strong> Análisis de la muestra.</p>
+<p>Se calcula el valor del estadístico de prueba: <span class="math display">\[
 z=\frac{\bar{x}-\bar{y}}{\sqrt{\sigma_X^2/n+\sigma_Y^2/m}}
 \]</span> El valor <span class="math inline">\(p\)</span> correspondiente se calcula como <span class="math display">\[
 \begin{array}{cc}
@@ -3333,14 +3352,15 @@ p=2\min\{P(Z\leq z),P(Z\geq z)\} &amp; \text{(dos colas)} \\
 p=P(Z\geq z) &amp; \text{(cola derecha)} \\
 p=P(Z\leq z) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 4:</strong> Conclusiones.</p>
+<p>Si el estadístico de prueba cae dentro de la región de rechazo, entonces rechazamos la hipótesis nula.</p>
+<p>De manera equivalente, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
 \begin{array}{ll}
-\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
 \text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
 \end{array}
-\]</span></p></li>
-</ul>
+\]</span></p>
 <p><strong>Código en R:</strong></p>
 <ul>
 <li>Para obtener el valor de <span class="math inline">\(z_\alpha\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
@@ -3349,30 +3369,31 @@ p=P(Z\leq z) &amp; \text{(cola izquierda)}
 </section>
 <section id="poblaciones-normales-varianzas-desconocidas-e-iguales-1" class="level3" data-number="7.4.2">
 <h3 data-number="7.4.2" class="anchored" data-anchor-id="poblaciones-normales-varianzas-desconocidas-e-iguales-1"><span class="header-section-number">7.4.2</span> Poblaciones normales, varianzas desconocidas e iguales</h3>
-<ul>
-<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+<p><strong>Paso 1:</strong> Hipótesis y Distribución Muestral.</p>
+<p>Hipótesis nula: <span class="math display">\[
 H_0:\mu_X=\mu_Y
-\]</span> Hipótesis alternativa <span class="math display">\[
+\]</span> Hipótesis alternativa: <span class="math display">\[
 \begin{array}{cc}
 H_1:\mu_X \neq \mu_Y &amp; \text{(dos colas)} \\
 H_1:\mu_Y &lt; \mu_X &amp; \text{(cola derecha)} \\
 H_1:\mu_X &lt;\mu_Y &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
-<li><p><strong>Paso 3:</strong> Estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p>Distribución muestral: <span class="math display">\[
 T=\frac{\bar{X}-\bar{Y}}{S_p\sqrt{1/n+1/m}}\sim t_{n+m-2}
 \]</span> donde <span class="math display">\[
 S_p^2=\frac{(n-1)S_X^2+(m-1)S_Y^2}{n+m-2}.
-\]</span></p></li>
-<li><p><strong>Paso 4:</strong> Región de rechazo <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 2:</strong> Regla de decisión.</p>
+<p>A partir del nivel de significancia <span class="math inline">\(\alpha\)</span> dado, se determina el valor de frontera y la región de rechazo: <span class="math display">\[
 \begin{array}{cc}
 (-\infty,t_{\alpha/2,n+m-2})\cup(t_{1-\alpha/2,n+m-2},\infty) &amp; \text{(dos colas)} \\
 (t_{1-\alpha,n+m-2},\infty) &amp; \text{(cola derecha)} \\
 (-\infty,t_{\alpha,n+m-2}) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 3:</strong> Análisis de la muestra.</p>
+<p>Se calcula el valor del estadístico de prueba: <span class="math display">\[
 t=\frac{\bar{x}-\bar{y}}{s_p\sqrt{1/n+1/m}}
 \]</span> donde <span class="math inline">\(s_p\)</span> es el valor observado de <span class="math inline">\(S_p\)</span>. El valor <span class="math inline">\(p\)</span> correspondiente se calcula como <span class="math display">\[
 \begin{array}{cc}
@@ -3380,14 +3401,15 @@ p=2\min\{P(T\leq t),P(T\geq t)\} &amp; \text{(dos colas)} \\
 p=P(T\geq t) &amp; \text{(cola derecha)} \\
 p=P(T\leq t) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 4:</strong> Conclusiones.</p>
+<p>Si el estadístico de prueba cae dentro de la región de rechazo, entonces rechazamos la hipótesis nula.</p>
+<p>De manera equivalente, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
 \begin{array}{ll}
-\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
 \text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
 \end{array}
-\]</span></p></li>
-</ul>
+\]</span></p>
 <p><strong>Código en R:</strong></p>
 <ul>
 <li>Para obtener el valor de <span class="math inline">\(t_{\alpha,n+m-2}\)</span>, se utiliza la función <code>qt(alpha, n+m-2)</code>.</li>
@@ -3397,30 +3419,31 @@ p=P(T\leq t) &amp; \text{(cola izquierda)}
 </section>
 <section id="poblaciones-normales-varianzas-desconocidas-y-diferentes-1" class="level3" data-number="7.4.3">
 <h3 data-number="7.4.3" class="anchored" data-anchor-id="poblaciones-normales-varianzas-desconocidas-y-diferentes-1"><span class="header-section-number">7.4.3</span> Poblaciones normales, varianzas desconocidas y diferentes</h3>
-<ul>
-<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+<p><strong>Paso 1:</strong> Hipótesis y Distribución Muestral.</p>
+<p>Hipótesis nula: <span class="math display">\[
 H_0:\mu_X = \mu_Y
-\]</span> Hipótesis alternativa <span class="math display">\[
+\]</span> Hipótesis alternativa: <span class="math display">\[
 \begin{array}{cc}
 H_1: \mu_X \neq \mu_Y &amp; \text{(dos colas)} \\
 H_1: \mu_Y &lt; \mu_X &amp; \text{(cola derecha)} \\
 H_1: \mu_X &lt; \mu_Y &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
-<li><p><strong>Paso 3:</strong> Estadístico de prueba. Usaremos la aproximación de Welch-Satterthwaite <span class="math display">\[
+\]</span></p>
+<p>Distribución muestral: Usaremos la aproximación de Welch-Satterthwaite <span class="math display">\[
 T=\frac{\bar{X}-\bar{Y}}{\sqrt{S_X^2/n+S_Y^2/m}}\approx t_\nu
 \]</span> donde <span class="math display">\[
 \nu=\frac{(S_X^2/n+S_Y^2/m)^2}{\frac{(S_X^2/n)^2}{n-1}+\frac{(S_Y^2/m)^2}{m-1}}.
-\]</span></p></li>
-<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 2:</strong> Regla de decisión.</p>
+<p>A partir del nivel de significancia <span class="math inline">\(\alpha\)</span> dado, se determina el valor de frontera y la región de rechazo: <span class="math display">\[
 \begin{array}{cc}
 (-\infty,t_{\alpha/2,\hat{\nu}})\cup(t_{1-\alpha/2,\hat{\nu}},\infty) &amp; \text{(dos colas)} \\
 (t_{1-\alpha,\hat{\nu}},\infty) &amp; \text{(cola derecha)} \\
 (-\infty,t_{\alpha,\hat{\nu}}) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 3:</strong> Análisis de la muestra.</p>
+<p>Se calcula el valor del estadístico de prueba: <span class="math display">\[
 t=\frac{\bar{x}-\bar{y}}{\sqrt{s_X^2/n+s_Y^2/m}}
 \]</span> donde <span class="math inline">\(s_X^2\)</span> y <span class="math inline">\(s_Y^2\)</span> son las varianzas muestrales observadas, y <span class="math display">\[
 \hat{\nu}=\frac{(s_X^2/n+s_Y^2/m)^2}{\frac{(s_X^2/n)^2}{n-1}+\frac{(s_Y^2/m)^2}{m-1}}.
@@ -3430,14 +3453,15 @@ p=2\min\{P(T\leq t),P(T\geq t)\} &amp; \text{(dos colas)} \\
 p=P(T\geq t) &amp; \text{(cola derecha)} \\
 p=P(T\leq t) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span> utilizando la distribución <span class="math inline">\(t_{\hat{\nu}}\)</span>.</p></li>
-<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\]</span> utilizando la distribución <span class="math inline">\(t_{\hat{\nu}}\)</span>.</p>
+<p><strong>Paso 4:</strong> Conclusiones.</p>
+<p>Si el estadístico de prueba cae dentro de la región de rechazo, entonces rechazamos la hipótesis nula.</p>
+<p>De manera equivalente, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
 \begin{array}{ll}
-\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
 \text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
 \end{array}
-\]</span></p></li>
-</ul>
+\]</span></p>
 <p><strong>Código en R:</strong></p>
 <ul>
 <li>Para obtener el valor de <span class="math inline">\(t_{\alpha,\hat{\nu}}\)</span>, se utiliza la función <code>qt(alpha, nu)</code>.</li>
@@ -3447,28 +3471,29 @@ p=P(T\leq t) &amp; \text{(cola izquierda)}
 </section>
 <section id="muestras-grandes-y-varianzas-conocidas-1" class="level3" data-number="7.4.4">
 <h3 data-number="7.4.4" class="anchored" data-anchor-id="muestras-grandes-y-varianzas-conocidas-1"><span class="header-section-number">7.4.4</span> Muestras grandes y varianzas conocidas</h3>
-<ul>
-<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+<p><strong>Paso 1:</strong> Hipótesis y Distribución Muestral.</p>
+<p>Hipótesis nula: <span class="math display">\[
 H_0:\mu_X = \mu_Y
-\]</span> Hipótesis alternativa <span class="math display">\[
+\]</span> Hipótesis alternativa: <span class="math display">\[
 \begin{array}{cc}
 H_1:\mu_X \neq \mu_Y &amp; \text{(dos colas)} \\
-H_1:-\mu_Y &lt; \mu_X &amp; \text{(cola derecha)} \\
+H_1:\mu_Y &lt; \mu_X &amp; \text{(cola derecha)} \\
 H_1:\mu_X &lt; \mu_Y &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
-<li><p><strong>Paso 3:</strong> Estadístico de prueba. Cuando las muestras son grandes (<span class="math inline">\(n,m\geq40\)</span>) y conocemos las varianzas, usaremos la aproximación <span class="math display">\[
+\]</span></p>
+<p>Distribución muestral: Cuando las muestras son grandes (<span class="math inline">\(n,m\geq40\)</span>) y conocemos las varianzas, usaremos la aproximación <span class="math display">\[
 Z=\frac{\bar{X}-\bar{Y}}{\sqrt{\sigma_X^2/n+\sigma_Y^2/m}}\approx\mathcal{N}(0,1)
-\]</span></p></li>
-<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 2:</strong> Regla de decisión.</p>
+<p>A partir del nivel de significancia <span class="math inline">\(\alpha\)</span> dado, se determina el valor de frontera y la región de rechazo: <span class="math display">\[
 \begin{array}{cc}
 (-\infty,z_{\alpha/2})\cup(z_{1-\alpha/2},\infty) &amp; \text{(dos colas)} \\
 (z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
 (-\infty,z_\alpha) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 3:</strong> Análisis de la muestra.</p>
+<p>Se calcula el valor del estadístico de prueba: <span class="math display">\[
 z=\frac{\bar{x}-\bar{y}}{\sqrt{\sigma_X^2/n+\sigma_Y^2/m}}
 \]</span> El valor <span class="math inline">\(p\)</span> aproximado se calcula como <span class="math display">\[
 \begin{array}{cc}
@@ -3476,14 +3501,15 @@ p=2\min\{P(Z\leq z),P(Z\geq z)\} &amp; \text{(dos colas)} \\
 p=P(Z\geq z) &amp; \text{(cola derecha)} \\
 p=P(Z\leq z) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 4:</strong> Conclusiones.</p>
+<p>Si el estadístico de prueba cae dentro de la región de rechazo, entonces rechazamos la hipótesis nula.</p>
+<p>De manera equivalente, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
 \begin{array}{ll}
-\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
 \text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
 \end{array}
-\]</span></p></li>
-</ul>
+\]</span></p>
 <p><strong>Código en R:</strong></p>
 <ul>
 <li>Para obtener el valor de <span class="math inline">\(z_\alpha\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
@@ -3492,28 +3518,29 @@ p=P(Z\leq z) &amp; \text{(cola izquierda)}
 </section>
 <section id="muestras-grandes-y-varianzas-desconocidas-1" class="level3" data-number="7.4.5">
 <h3 data-number="7.4.5" class="anchored" data-anchor-id="muestras-grandes-y-varianzas-desconocidas-1"><span class="header-section-number">7.4.5</span> Muestras grandes y varianzas desconocidas</h3>
-<ul>
-<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+<p><strong>Paso 1:</strong> Hipótesis y Distribución Muestral.</p>
+<p>Hipótesis nula: <span class="math display">\[
 H_0:\mu_X = \mu_Y
-\]</span> Hipótesis alternativa <span class="math display">\[
+\]</span> Hipótesis alternativa: <span class="math display">\[
 \begin{array}{cc}
 H_1:\mu_X \neq \mu_Y &amp; \text{(dos colas)} \\
 H_1:\mu_Y &lt; \mu_X &amp; \text{(cola derecha)} \\
 H_1:\mu_X &lt; \mu_Y &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
-<li><p><strong>Paso 3:</strong> Estadístico de prueba. Cuando las muestras son grandes (<span class="math inline">\(n,m\geq40\)</span>) y desconocemos las varianzas, usaremos la aproximación <span class="math display">\[
+\]</span></p>
+<p>Distribución muestral: Cuando las muestras son grandes (<span class="math inline">\(n,m\geq40\)</span>) y desconocemos las varianzas, usaremos la aproximación <span class="math display">\[
 Z=\frac{\bar{X}-\bar{Y}}{\sqrt{S_X^2/n+S_Y^2/m}}\approx\mathcal{N}(0,1)
-\]</span></p></li>
-<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 2:</strong> Regla de decisión.</p>
+<p>A partir del nivel de significancia <span class="math inline">\(\alpha\)</span> dado, se determina el valor de frontera y la región de rechazo: <span class="math display">\[
 \begin{array}{cc}
 (-\infty,z_{\alpha/2})\cup(z_{1-\alpha/2},\infty) &amp; \text{(dos colas)} \\
 (z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
 (-\infty,z_\alpha) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 3:</strong> Análisis de la muestra.</p>
+<p>Se calcula el valor del estadístico de prueba: <span class="math display">\[
 z=\frac{\bar{x}-\bar{y}}{\sqrt{s_X^2/n+s_Y^2/m}}
 \]</span> El valor <span class="math inline">\(p\)</span> aproximado se calcula como <span class="math display">\[
 \begin{array}{cc}
@@ -3521,14 +3548,15 @@ p=2\min\{P(Z\leq z),P(Z\geq z)\} &amp; \text{(dos colas)} \\
 p=P(Z\geq z) &amp; \text{(cola derecha)} \\
 p=P(Z\leq z) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 4:</strong> Conclusiones.</p>
+<p>Si el estadístico de prueba cae dentro de la región de rechazo, entonces rechazamos la hipótesis nula.</p>
+<p>De manera equivalente, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
 \begin{array}{ll}
-\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
 \text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
 \end{array}
-\]</span></p></li>
-</ul>
+\]</span></p>
 <p><strong>Código en R:</strong></p>
 <ul>
 <li>Para obtener el valor de <span class="math inline">\(z_\alpha\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
@@ -3538,30 +3566,31 @@ p=P(Z\leq z) &amp; \text{(cola izquierda)}
 </section>
 <section id="diferencia-de-proporciones-de-dos-poblaciones-1" class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="diferencia-de-proporciones-de-dos-poblaciones-1"><span class="header-section-number">7.5</span> Diferencia de proporciones de dos poblaciones</h2>
-<ul>
-<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+<p><strong>Paso 1:</strong> Hipótesis y Distribución Muestral.</p>
+<p>Hipótesis nula: <span class="math display">\[
 H_0:p_X = p_Y
-\]</span> Hipótesis alternativa <span class="math display">\[
+\]</span> Hipótesis alternativa: <span class="math display">\[
 \begin{array}{cc}
 H_1:p_X \neq p_Y &amp; \text{(dos colas)} \\
 H_1:p_Y &lt; p_X &amp; \text{(cola derecha)} \\
 H_1:p_X &lt; p_Y &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
-<li><p><strong>Paso 3:</strong> Estadístico de prueba. Para muestras suficientemente grandes, usaremos la aproximación <span class="math display">\[
+\]</span></p>
+<p>Distribución muestral: Para muestras suficientemente grandes, usaremos la aproximación <span class="math display">\[
 Z=\frac{\bar{X}-\bar{Y}}{\sqrt{\hat{p}(1-\hat{p})(1/n+1/m)}}\approx\mathcal{N}(0,1)
 \]</span> donde <span class="math display">\[
 \hat{p}=\frac{n\bar{X}+m\bar{Y}}{n+m}
-\]</span> es la proporción combinada.</p></li>
-<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+\]</span> es la proporción combinada.</p>
+<p><strong>Paso 2:</strong> Regla de decisión.</p>
+<p>A partir del nivel de significancia <span class="math inline">\(\alpha\)</span> dado, se determina el valor de frontera y la región de rechazo: <span class="math display">\[
 \begin{array}{cc}
 (-\infty,z_{\alpha/2})\cup(z_{1-\alpha/2},\infty) &amp; \text{(dos colas)} \\
 (z_{1-\alpha},\infty) &amp; \text{(cola derecha)} \\
 (-\infty,z_\alpha) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 3:</strong> Análisis de la muestra.</p>
+<p>Se calcula el valor del estadístico de prueba: <span class="math display">\[
 z=\frac{\bar{x}-\bar{y}}{\sqrt{\hat{p}(1-\hat{p})(1/n+1/m)}}
 \]</span> donde <span class="math display">\[
 \hat{p}=\frac{n\bar{x}+m\bar{y}}{n+m}.
@@ -3571,14 +3600,15 @@ p=2\min\{P(Z\leq z),P(Z\geq z)\} &amp; \text{(dos colas)} \\
 p=P(Z\geq z) &amp; \text{(cola derecha)} \\
 p=P(Z\leq z) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 4:</strong> Conclusiones.</p>
+<p>Si el estadístico de prueba cae dentro de la región de rechazo, entonces rechazamos la hipótesis nula.</p>
+<p>De manera equivalente, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
 \begin{array}{ll}
-\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
 \text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
 \end{array}
-\]</span></p></li>
-</ul>
+\]</span></p>
 <p><strong>Código en R:</strong></p>
 <ul>
 <li>Para obtener el valor de <span class="math inline">\(z_\alpha\)</span>, se utiliza la función <code>qnorm(alpha)</code>.</li>
@@ -3588,28 +3618,29 @@ p=P(Z\leq z) &amp; \text{(cola izquierda)}
 </section>
 <section id="cociente-de-varianzas-de-dos-poblaciones-normales-1" class="level2" data-number="7.6">
 <h2 data-number="7.6" class="anchored" data-anchor-id="cociente-de-varianzas-de-dos-poblaciones-normales-1"><span class="header-section-number">7.6</span> Cociente de varianzas de dos poblaciones normales</h2>
-<ul>
-<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+<p><strong>Paso 1:</strong> Hipótesis y Distribución Muestral.</p>
+<p>Hipótesis nula: <span class="math display">\[
 H_0:\sigma_{X}^2 = \sigma_{Y}^2
-\]</span> Hipótesis alternativa <span class="math display">\[
+\]</span> Hipótesis alternativa: <span class="math display">\[
 \begin{array}{cc}
 H_1:\sigma_X^2 \neq \sigma_Y^2 &amp; \text{(dos colas)} \\
 H_1:\sigma_Y^2 &lt; \sigma_X^2 &amp; \text{(cola derecha)} \\
 H_1:\sigma_X^2 &lt; \sigma_Y^2 &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
-<li><p><strong>Paso 3:</strong> Estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p>Distribución muestral: <span class="math display">\[
 F=\frac{S_X^2}{S_Y^2}\sim F_{n-1,m-1}
-\]</span></p></li>
-<li><p><strong>Paso 4:</strong> Región de rechazo <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 2:</strong> Regla de decisión.</p>
+<p>A partir del nivel de significancia <span class="math inline">\(\alpha\)</span> dado, se determina el valor de frontera y la región de rechazo: <span class="math display">\[
 \begin{array}{cc}
 (0,f_{\alpha/2,n-1,m-1})\cup(f_{1-\alpha/2,n-1,m-1},\infty) &amp; \text{(dos colas)} \\
 (f_{1-\alpha,n-1,m-1},\infty) &amp; \text{(cola derecha)} \\
 (0,f_{\alpha,n-1,m-1}) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 3:</strong> Análisis de la muestra.</p>
+<p>Se calcula el valor del estadístico de prueba: <span class="math display">\[
 f=\frac{s_X^2}{s_Y^2}
 \]</span> donde <span class="math inline">\(s_X^2\)</span> y <span class="math inline">\(s_Y^2\)</span> son las varianzas muestrales observadas. El valor <span class="math inline">\(p\)</span> correspondiente se calcula como <span class="math display">\[
 \begin{array}{cc}
@@ -3617,14 +3648,15 @@ p=\min\{1,2\min(P(F\leq f),P(F\geq f))\} &amp; \text{(dos colas)} \\
 p=P(F\geq f) &amp; \text{(cola derecha)} \\
 p=P(F\leq f) &amp; \text{(cola izquierda)}
 \end{array}
-\]</span></p></li>
-<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 4:</strong> Conclusiones.</p>
+<p>Si el estadístico de prueba cae dentro de la región de rechazo, entonces rechazamos la hipótesis nula.</p>
+<p>De manera equivalente, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
 \begin{array}{ll}
-\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
 \text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
 \end{array}
-\]</span></p></li>
-</ul>
+\]</span></p>
 <p><strong>Código en R:</strong></p>
 <ul>
 <li>Para obtener el valor de <span class="math inline">\(f_{\alpha,n-1,m-1}\)</span>, se utiliza la función <code>qf(alpha, n-1, m-1)</code>.</li>
@@ -3636,33 +3668,35 @@ p=P(F\leq f) &amp; \text{(cola izquierda)}
 <h2 data-number="7.7" class="anchored" data-anchor-id="independencia-de-dos-variables-categóricas"><span class="header-section-number">7.7</span> Independencia de dos variables categóricas</h2>
 <p>Consideremos una muestra aleatoria de tamaño <span class="math inline">\(n\)</span> de una población, en la que observamos dos variables categóricas <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, con <span class="math inline">\(r\)</span> y <span class="math inline">\(c\)</span> categorías, respectivamente. Los resultados se organizan en una tabla de contingencia de <span class="math inline">\(r\)</span> filas y <span class="math inline">\(c\)</span> columnas.</p>
 <p>Sea <span class="math inline">\(O_{ij}\)</span> la frecuencia observada en la celda <span class="math inline">\((i,j)\)</span>, y sean <span class="math inline">\(O_{i\cdot}\)</span> y <span class="math inline">\(O_{\cdot j}\)</span> las frecuencias marginales correspondientes.</p>
-<ul>
-<li><p><strong>Paso 1:</strong> Hipótesis nula <span class="math display">\[
+<p><strong>Paso 1:</strong> Hipótesis y Distribución Muestral.</p>
+<p>Hipótesis nula: <span class="math display">\[
 H_0:\text{$X$ e $Y$ son independientes}
-\]</span> Hipótesis alternativa <span class="math display">\[
+\]</span> Hipótesis alternativa: <span class="math display">\[
 H_1:\text{$X$ e $Y$ no son independientes}
-\]</span></p></li>
-<li><p><strong>Paso 2:</strong> Nivel de significancia <span class="math inline">\(\alpha\)</span>.</p></li>
-<li><p><strong>Paso 3:</strong> Estadístico de prueba. Bajo la hipótesis nula, las frecuencias esperadas se calculan mediante <span class="math display">\[
+\]</span></p>
+<p>Distribución muestral: Bajo la hipótesis nula, las frecuencias esperadas se calculan mediante <span class="math display">\[
 E_{ij}=\frac{O_{i\cdot}O_{\cdot j}}{n}
 \]</span> y el estadístico de prueba es <span class="math display">\[
 Q=\sum_{i=1}^{r}\sum_{j=1}^{c}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\approx\chi^2_{(r-1)(c-1)}
-\]</span> donde <span class="math inline">\((r-1)(c-1)\)</span> son los grados de libertad. Esta aproximación se utiliza cuando las frecuencias esperadas son suficientemente grandes (usualmente <span class="math inline">\(E_{ij}\geq5\)</span>).</p></li>
-<li><p><strong>Paso 4:</strong> Región de rechazo aproximada <span class="math display">\[
+\]</span> donde <span class="math inline">\((r-1)(c-1)\)</span> son los grados de libertad. Esta aproximación se utiliza cuando las frecuencias esperadas son suficientemente grandes (usualmente <span class="math inline">\(E_{ij}\geq5\)</span>).</p>
+<p><strong>Paso 2:</strong> Regla de decisión.</p>
+<p>A partir del nivel de significancia <span class="math inline">\(\alpha\)</span> dado, se determina el valor de frontera y la región de rechazo: <span class="math display">\[
 (\chi^2_{1-\alpha,(r-1)(c-1)},\infty)
-\]</span></p></li>
-<li><p><strong>Paso 5:</strong> Valor del estadístico de prueba <span class="math display">\[
+\]</span></p>
+<p><strong>Paso 3:</strong> Análisis de la muestra.</p>
+<p>Se calcula el valor del estadístico de prueba: <span class="math display">\[
 q=\sum_{i=1}^{r}\sum_{j=1}^{c}\frac{(o_{ij}-e_{ij})^2}{e_{ij}}
 \]</span> donde <span class="math inline">\(o_{ij}\)</span> y <span class="math inline">\(e_{ij}\)</span> son las frecuencias observadas y esperadas, respectivamente. El valor <span class="math inline">\(p\)</span> aproximado se calcula como <span class="math display">\[
 p=P(Q\geq q)
-\]</span> utilizando la distribución <span class="math inline">\(\chi^2_{(r-1)(c-1)}\)</span>.</p></li>
-<li><p><strong>Paso 6:</strong> Determinar si se rechaza la hipótesis nula, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>. <span class="math display">\[
+\]</span> utilizando la distribución <span class="math inline">\(\chi^2_{(r-1)(c-1)}\)</span>.</p>
+<p><strong>Paso 4:</strong> Conclusiones.</p>
+<p>Si el estadístico de prueba cae dentro de la región de rechazo, entonces rechazamos la hipótesis nula.</p>
+<p>De manera equivalente, comparando los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
 \begin{array}{ll}
-\text{Si $p\leq\alpha$} &amp; \text{se rechaza $H_0$} \\
+\text{Si $p\leq \alpha$} &amp; \text{se rechaza $H_0$} \\
 \text{Si $p&gt;\alpha$} &amp; \text{no se rechaza $H_0$}
 \end{array}
-\]</span></p></li>
-</ul>
+\]</span></p>
 <p><strong>Código en R:</strong></p>
 <ul>
 <li>Para obtener el valor de <span class="math inline">\(\chi^2_{1-\alpha,(r-1)(c-1)}\)</span>, se utiliza la función <code>qchisq(1-alpha, (r-1)*(c-1))</code>.</li>
